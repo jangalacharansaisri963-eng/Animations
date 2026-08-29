@@ -1,4 +1,5 @@
 let audioContext = null;
+
 const AnimationAudioRegistry = {};
 
 function getAudioContext() {
@@ -15,11 +16,25 @@ function getAudioContext() {
         audioContext = new AudioContext();
     }
 
-    if (audioContext.state === "suspended") {
-        audioContext.resume();
+    return audioContext;
+}
+
+async function unlockAudio() {
+    const ctx = getAudioContext();
+
+    if (!ctx) {
+        return null;
     }
 
-    return audioContext;
+    if (ctx.state === "suspended") {
+        try {
+            await ctx.resume();
+        } catch (err) {
+            console.warn("Could not resume audio:", err);
+        }
+    }
+
+    return ctx;
 }
 
 function playTone(
@@ -30,7 +45,7 @@ function playTone(
 ) {
     const ctx = getAudioContext();
 
-    if (!ctx) {
+    if (!ctx || ctx.state !== "running") {
         return;
     }
 
@@ -38,6 +53,7 @@ function playTone(
     const gain = ctx.createGain();
 
     oscillator.type = type;
+
     oscillator.frequency.setValueAtTime(
         frequency,
         ctx.currentTime
@@ -57,6 +73,7 @@ function playTone(
     gain.connect(ctx.destination);
 
     oscillator.start();
+
     oscillator.stop(
         ctx.currentTime + duration
     );
@@ -71,14 +88,24 @@ function registerAnimationAudio(name, playFn) {
     AnimationAudioRegistry[name] = playFn;
 }
 
-function playAnimationSound(name) {
+async function playAnimationSound(name) {
     const playFn = AnimationAudioRegistry[name];
 
-    if (typeof playFn === "function") {
-        try {
-            playFn();
-        } catch (err) {
-            console.warn(`Failed to play sound for "${name}":`, err);
-        }
+    if (typeof playFn !== "function") {
+        console.warn(
+            `No audio registered for animation "${name}".`
+        );
+        return;
+    }
+
+    await unlockAudio();
+
+    try {
+        playFn();
+    } catch (err) {
+        console.warn(
+            `Failed to play sound for "${name}":`,
+            err
+        );
     }
 }
