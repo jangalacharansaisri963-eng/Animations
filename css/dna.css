@@ -1,96 +1,764 @@
 .anim-dna {
-position: relative;
-
-width: 180px;
-height: 250px;
-
-display: flex;
-align-items: center;
-justify-content: center;
-
+    position: relative;
+    width: 240px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.dna-strand {
-position: absolute;
-
-left: 50%;
-
-width: 18px;
-height: 18px;
-
-margin-left: -9px;
-
-border-radius: 50%;
-
-background: #00f2fe;
-
-box-shadow:
-    0 0 15px #00f2fe;
-
-animation:
-    dnaMove 2s ease-in-out infinite;
-
+.dna-universe {
+    position: relative;
+    width: 240px;
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 900px;
 }
 
-.dna-strand:nth-child(odd) {
-background: #a855f7;
+/* Background */
 
-box-shadow:
-    0 0 15px #a855f7;
+.dna-background-grid {
+    position: absolute;
+    inset: -30px;
 
+    background:
+        linear-gradient(
+            rgba(34, 211, 238, .035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(168, 85, 247, .035) 1px,
+            transparent 1px
+        );
+
+    background-size: 20px 20px;
+
+    transform: perspective(400px) rotateX(55deg) scale(1.4);
+
+    opacity: .5;
+
+    animation: dnaGridMove 8s linear infinite;
 }
 
-.dna-strand:nth-child(1) {
-top: 10px;
-animation-delay: 0s;
+/* Glow */
+
+.dna-aura {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
 }
 
-.dna-strand:nth-child(2) {
-top: 40px;
-animation-delay: -.25s;
+.dna-aura-outer {
+    width: 210px;
+    height: 230px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(34, 211, 238, .13),
+            rgba(168, 85, 247, .08) 45%,
+            transparent 72%
+        );
+
+    filter: blur(25px);
+
+    animation:
+        dnaAuraOuter 4s ease-in-out infinite alternate;
 }
 
-.dna-strand:nth-child(3) {
-top: 70px;
-animation-delay: -.5s;
+.dna-aura-inner {
+    width: 120px;
+    height: 210px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255, 255, 255, .08),
+            rgba(34, 211, 238, .12) 35%,
+            transparent 70%
+        );
+
+    filter: blur(18px);
+
+    animation:
+        dnaAuraInner 2.5s ease-in-out infinite alternate;
 }
 
-.dna-strand:nth-child(4) {
-top: 100px;
-animation-delay: -.75s;
+
+/* Energy field */
+
+.dna-energy-field {
+    position: absolute;
+    width: 220px;
+    height: 240px;
+    pointer-events: none;
 }
 
-.dna-strand:nth-child(5) {
-top: 130px;
-animation-delay: -1s;
-}
+.dna-energy-arc {
+    position: absolute;
 
-.dna-strand:nth-child(6) {
-top: 160px;
-animation-delay: -1.25s;
-}
+    left: 50%;
+    top: 50%;
 
-.dna-strand:nth-child(7) {
-top: 190px;
-animation-delay: -1.5s;
-}
+    width: 190px;
+    height: 70px;
 
-.dna-strand:nth-child(8) {
-top: 220px;
-animation-delay: -1.75s;
-}
+    border:
+        1px solid rgba(34, 211, 238, .18);
 
-@keyframes dnaMove {
-0%, 100% {
-transform:
-translateX(-65px)
-scale(.8);
-}
+    border-radius: 50%;
 
-50% {
     transform:
-        translateX(65px)
-        scale(1.15);
+        translate(-50%, -50%)
+        rotate(calc(var(--arc-index) * 30deg));
+
+    animation:
+        energyRotate 6s linear infinite;
+
+    animation-delay:
+        calc(var(--arc-index) * -.5s);
 }
 
+
+/* Main helix */
+
+.dna-helix-container {
+    position: relative;
+
+    width: 170px;
+    height: 225px;
+
+    transform-style: preserve-3d;
+
+    animation:
+        dnaHelixFloat 4s ease-in-out infinite;
 }
+
+.dna-helix-shadow {
+    position: absolute;
+
+    left: 50%;
+    bottom: -5px;
+
+    width: 120px;
+    height: 22px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.45);
+
+    filter: blur(10px);
+}
+
+
+/* DNA backbones */
+
+.dna-backbone {
+    position: absolute;
+
+    top: 5px;
+
+    width: 15px;
+    height: 215px;
+
+    border-radius: 50%;
+
+    z-index: 2;
+
+    transform-origin: center;
+
+    filter: saturate(1.3);
+}
+
+.backbone-left {
+    left: 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #22d3ee,
+            #06b6d4,
+            #6366f1,
+            #22d3ee,
+            #67e8f9
+        );
+
+    box-shadow:
+        0 0 8px #22d3ee,
+        0 0 22px rgba(34,211,238,.65);
+
+    animation:
+        backboneLeft 3.2s ease-in-out infinite;
+}
+
+.backbone-right {
+    right: 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f472b6,
+            #c026d3,
+            #7c3aed,
+            #ec4899,
+            #f9a8d4
+        );
+
+    box-shadow:
+        0 0 8px #ec4899,
+        0 0 22px rgba(236,72,153,.65);
+
+    animation:
+        backboneRight 3.2s ease-in-out infinite;
+}
+
+
+/* Base pairs */
+
+.dna-pairs {
+    position: absolute;
+    inset: 0;
+
+    transform-style: preserve-3d;
+
+    z-index: 5;
+}
+
+.dna-pair {
+    position: absolute;
+
+    left: 50%;
+
+    top:
+        calc(
+            4px +
+            var(--pair-index) * 9px
+        );
+
+    width: 150px;
+    height: 20px;
+
+    transform:
+        translateX(-50%)
+        rotateY(var(--pair-angle));
+
+    transform-style: preserve-3d;
+
+    animation:
+        dnaPairGlow 3.2s ease-in-out infinite;
+
+    animation-delay: var(--pair-delay);
+}
+
+
+/* Nucleotides */
+
+.dna-nucleotide {
+    position: absolute;
+
+    top: 50%;
+
+    width: 18px;
+    height: 18px;
+
+    margin-top: -9px;
+
+    border-radius: 50%;
+
+    transform-style: preserve-3d;
+
+    z-index: 10;
+}
+
+.nucleotide-left {
+    left: 9px;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            white,
+            #67e8f9 20%,
+            #06b6d4 55%,
+            #164e63
+        );
+
+    box-shadow:
+        0 0 7px #22d3ee,
+        0 0 18px rgba(34,211,238,.9);
+}
+
+.nucleotide-right {
+    right: 9px;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            white,
+            #f9a8d4 20%,
+            #ec4899 55%,
+            #701a75
+        );
+
+    box-shadow:
+        0 0 7px #f472b6,
+        0 0 18px rgba(236,72,153,.9);
+}
+
+.nucleotide-core {
+    position: absolute;
+
+    inset: 5px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: .85;
+
+    box-shadow:
+        0 0 5px white;
+}
+
+.nucleotide-glow {
+    position: absolute;
+
+    inset: -7px;
+
+    border-radius: 50%;
+
+    background: inherit;
+
+    filter: blur(7px);
+
+    opacity: .35;
+
+    z-index: -1;
+}
+
+
+/* Base connection */
+
+.dna-base {
+    position: absolute;
+
+    left: 26px;
+    right: 26px;
+
+    top: 50%;
+
+    height: 5px;
+
+    margin-top: -2.5px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-around;
+}
+
+.dna-base::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #22d3ee,
+            #f8fafc,
+            #f472b6
+        );
+
+    box-shadow:
+        0 0 7px rgba(255,255,255,.8),
+        0 0 14px rgba(139,92,246,.5);
+}
+
+.dna-base span {
+    position: relative;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 7px white;
+
+    z-index: 2;
+}
+
+.dna-pair:nth-child(3n) .dna-base::before {
+    background:
+        linear-gradient(
+            90deg,
+            #06b6d4,
+            #67e8f9,
+            #ec4899
+        );
+}
+
+.dna-pair:nth-child(4n) .dna-base {
+    height: 7px;
+}
+
+.dna-pair:nth-child(4n) .dna-base span {
+    width: 8px;
+    height: 8px;
+}
+
+
+/* Molecules */
+
+.dna-molecules {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 15;
+}
+
+.dna-molecule {
+    position: absolute;
+
+    left: var(--x);
+    top: var(--y);
+
+    width: var(--size);
+    height: var(--size);
+
+    border-radius: 50%;
+
+    background: #67e8f9;
+
+    box-shadow:
+        0 0 7px #22d3ee,
+        0 0 15px rgba(34,211,238,.7);
+
+    animation:
+        moleculeFloat 3.5s ease-in-out infinite;
+
+    animation-delay:
+        var(--molecule-delay);
+}
+
+
+/* Central molecular axis */
+
+.dna-axis {
+    position: absolute;
+
+    left: 50%;
+    top: 5px;
+
+    width: 2px;
+    height: 215px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(255,255,255,.35),
+            transparent
+        );
+
+    opacity: .2;
+
+    z-index: 1;
+}
+
+.dna-axis span {
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    width: 6px;
+    height: 6px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 10px white;
+
+    animation:
+        axisScan 2.5s linear infinite;
+}
+
+
+/* Scanner */
+
+.dna-scanner {
+    position: absolute;
+
+    left: 18px;
+    right: 18px;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #22d3ee,
+            white,
+            #ec4899,
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px #22d3ee,
+        0 0 20px rgba(236,72,153,.6);
+
+    opacity: .55;
+
+    z-index: 20;
+
+    animation:
+        dnaScanner 3s ease-in-out infinite;
+}
+
+
+/* HUD */
+
+.dna-label {
+    position: absolute;
+
+    left: 10px;
+    bottom: 8px;
+
+    font-family:
+        "Segoe UI",
+        sans-serif;
+
+    font-size: 7px;
+
+    letter-spacing: 1.5px;
+
+    color: rgba(255,255,255,.55);
+
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    z-index: 30;
+}
+
+.dna-status-dot {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #22d3ee;
+
+    box-shadow:
+        0 0 7px #22d3ee;
+
+    animation:
+        statusBlink 1.5s ease-in-out infinite;
+}
+
+
+/* Animations */
+
+@keyframes dnaHelixFloat {
+    0%, 100% {
+        transform:
+            translateY(-4px)
+            rotateZ(-1deg);
+    }
+
+    50% {
+        transform:
+            translateY(4px)
+            rotateZ(1deg);
+    }
+}
+
+@keyframes backboneLeft {
+    0%, 100% {
+        transform:
+            translateX(0)
+            scaleY(1);
+    }
+
+    50% {
+        transform:
+            translateX(30px)
+            scaleY(1.03);
+    }
+}
+
+@keyframes backboneRight {
+    0%, 100% {
+        transform:
+            translateX(0)
+            scaleY(1);
+    }
+
+    50% {
+        transform:
+            translateX(-30px)
+            scaleY(1.03);
+    }
+}
+
+@keyframes dnaPairGlow {
+    0%, 100% {
+        filter:
+            brightness(.8)
+            saturate(1);
+    }
+
+    50% {
+        filter:
+            brightness(1.45)
+            saturate(1.4);
+    }
+}
+
+@keyframes moleculeFloat {
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            scale(.6);
+
+        opacity: .2;
+    }
+
+    50% {
+        transform:
+            translate(8px, -14px)
+            scale(1.35);
+
+        opacity: 1;
+    }
+}
+
+@keyframes dnaScanner {
+    0% {
+        top: 10px;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .7;
+    }
+
+    50% {
+        opacity: .9;
+    }
+
+    85% {
+        opacity: .7;
+    }
+
+    100% {
+        top: 235px;
+        opacity: 0;
+    }
+}
+
+@keyframes axisScan {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 209px;
+    }
+}
+
+@keyframes dnaAuraOuter {
+    from {
+        transform: scale(.8);
+        opacity: .35;
+    }
+
+    to {
+        transform: scale(1.15);
+        opacity: .75;
+    }
+}
+
+@keyframes dnaAuraInner {
+    from {
+        transform: scale(.85);
+        opacity: .4;
+    }
+
+    to {
+        transform: scale(1.15);
+        opacity: .9;
+    }
+}
+
+@keyframes energyRotate {
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(360deg);
+    }
+}
+
+@keyframes dnaGridMove {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 40px;
+    }
+}
+
+@keyframes statusBlink {
+    0%, 100% {
+        opacity: .3;
+        transform: scale(.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+    .anim-dna *,
+    .anim-dna *::before,
+    .anim-dna *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+    }
