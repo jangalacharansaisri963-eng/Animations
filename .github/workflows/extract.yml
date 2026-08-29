@@ -6,23 +6,28 @@ on:
     paths:
       - 'Animations-main.zip'
 
+permissions:
+  contents: write
+
 jobs:
   unzip:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout with write permission
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Unzip file
         run: |
           unzip -o Animations-main.zip -d ./
           ls -la
-          rm Animations-main.zip
+          rm -f Animations-main.zip
 
-      - name: Commit unzipped files
+      - name: Commit and Push
         run: |
-          git config --global user.name "Dan Studios"
-          git config --global user.email "dan@yellamanchili.com"
+          git config --global user.name "Dan Bot"
+          git config --global user.email "dan-bot@github.com"
           git add .
-          git commit -m "Unzipped Animations-main.zip" || echo "No changes"
+          git commit -m "Unzipped Animations-main.zip by Dan" || echo "No changes to commit"
           git push
