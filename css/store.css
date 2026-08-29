@@ -301,6 +301,27 @@ body {
         );
 }
 
+.icon-liquid-mercury {
+    background: linear-gradient(
+        135deg,
+        #f8fafc,
+        #94a3b8,
+        #475569
+    );
+    color: #0f172a;
+}
+
+.icon-black-hole {
+    background: radial-gradient(
+        circle,
+        #000 25%,
+        #6d28d9 45%,
+        #f97316 65%,
+        #111827 100%
+    );
+    color: #ffffff;
+}
+
 .icon-dna {
     background:
         linear-gradient(
