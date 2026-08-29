@@ -1,120 +1,834 @@
 .anim-blob-wrapper {
-position: relative;
-
-width: 240px;
-height: 240px;
-
-display: flex;
-align-items: center;
-justify-content: center;
-
+    position: relative;
+    width: 240px;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    perspective: 800px;
 }
 
-.anim-blob-glow {
-position: absolute;
+/* Background atmosphere */
 
-width: 190px;
-height: 190px;
-
-border-radius: 50%;
-
-background: #ff007f;
-
-filter: blur(45px);
-opacity: 0.35;
-
-animation:
-    blobGlow 3s ease-in-out infinite alternate;
-
+.blob-background,
+.blob-aura,
+.blob-particles,
+.blob-orbit,
+.blob-energy-arc,
+.blob-ring,
+.blob-shockwave,
+.blob-droplets,
+.blob-filaments,
+.blob-bloom {
+    position: absolute;
+    pointer-events: none;
 }
+
+.blob-background {
+    inset: -80px;
+    overflow: hidden;
+}
+
+.blob-bg-glow {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    filter: blur(45px);
+    opacity: .35;
+    animation: backgroundDrift 6s ease-in-out infinite alternate;
+}
+
+.glow-1 {
+    top: 10%;
+    left: 15%;
+    background: #ff007f;
+}
+
+.glow-2 {
+    right: 5%;
+    bottom: 15%;
+    background: #4facfe;
+    animation-delay: -2s;
+}
+
+.glow-3 {
+    top: 45%;
+    left: 45%;
+    background: #7b1fa2;
+    animation-delay: -4s;
+}
+
+@keyframes backgroundDrift {
+    from {
+        transform: scale(.7) translate(-15px, 10px);
+        opacity: .2;
+    }
+
+    to {
+        transform: scale(1.3) translate(15px, -10px);
+        opacity: .45;
+    }
+}
+
+
+/* Main aura */
+
+.blob-aura {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    filter: blur(30px);
+    animation: auraPulse 3s ease-in-out infinite;
+}
+
+.aura-1 {
+    background: #ff007f;
+    opacity: .3;
+}
+
+.aura-2 {
+    width: 145px;
+    height: 145px;
+    background: #7b1fa2;
+    opacity: .35;
+    animation-delay: -1s;
+}
+
+.aura-3 {
+    width: 110px;
+    height: 110px;
+    background: #4facfe;
+    opacity: .25;
+    animation-delay: -2s;
+}
+
+@keyframes auraPulse {
+    0%, 100% {
+        transform: scale(.75);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+
+/* Particle field */
+
+.blob-particles {
+    inset: -10px;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    box-shadow:
+        0 0 6px #fff,
+        0 0 14px #ff007f;
+    animation: particleFloat 4s ease-in-out infinite;
+}
+
+.particle:nth-child(3n) {
+    background: #4facfe;
+    box-shadow: 0 0 12px #4facfe;
+}
+
+.particle:nth-child(4n) {
+    background: #ff007f;
+    box-shadow: 0 0 12px #ff007f;
+}
+
+.particle:nth-child(1) { left: 8%; top: 30%; animation-delay: -.2s; }
+.particle:nth-child(2) { left: 18%; top: 72%; animation-delay: -1s; }
+.particle:nth-child(3) { left: 27%; top: 12%; animation-delay: -2s; }
+.particle:nth-child(4) { left: 36%; top: 88%; animation-delay: -3s; }
+.particle:nth-child(5) { left: 45%; top: 5%; animation-delay: -1.5s; }
+.particle:nth-child(6) { left: 54%; top: 92%; animation-delay: -.8s; }
+.particle:nth-child(7) { left: 64%; top: 15%; animation-delay: -2.5s; }
+.particle:nth-child(8) { left: 73%; top: 80%; animation-delay: -1.2s; }
+.particle:nth-child(9) { left: 84%; top: 35%; animation-delay: -3.2s; }
+.particle:nth-child(10) { left: 92%; top: 65%; animation-delay: -.5s; }
+
+.particle:nth-child(n+11) {
+    transform: scale(.7);
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(.6);
+        opacity: .25;
+    }
+
+    50% {
+        transform: translate(10px, -16px) scale(1.5);
+        opacity: 1;
+    }
+}
+
+
+/* Additional particle layers */
+
+.particles-mid {
+    transform: scale(.8);
+    animation: particleLayer 8s linear infinite reverse;
+}
+
+.particles-front {
+    transform: scale(.65);
+    animation: particleLayer 5s linear infinite;
+}
+
+@keyframes particleLayer {
+    to {
+        transform: scale(.8) rotate(360deg);
+    }
+}
+
+
+/* Main orbital system */
+
+.blob-orbit {
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 50%;
+    transform-origin: center;
+}
+
+.orbit-outer {
+    width: 225px;
+    height: 105px;
+    transform: translate(-50%, -50%) rotate(22deg);
+    animation: orbitOuter 8s linear infinite;
+}
+
+.orbit-middle {
+    width: 185px;
+    height: 85px;
+    transform: translate(-50%, -50%) rotate(-42deg);
+    animation: orbitMiddle 6s linear infinite;
+}
+
+.orbit-inner {
+    width: 150px;
+    height: 70px;
+    transform: translate(-50%, -50%) rotate(70deg);
+    animation: orbitInner 4s linear infinite;
+}
+
+@keyframes orbitOuter {
+    to {
+        transform: translate(-50%, -50%) rotate(382deg);
+    }
+}
+
+@keyframes orbitMiddle {
+    to {
+        transform: translate(-50%, -50%) rotate(-402deg);
+    }
+}
+
+@keyframes orbitInner {
+    to {
+        transform: translate(-50%, -50%) rotate(430deg);
+    }
+}
+
+.orbit-particle {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: white;
+    box-shadow:
+        0 0 8px white,
+        0 0 20px #ff007f;
+}
+
+.orbit-particle.p1 {
+    top: -4px;
+    left: 25%;
+}
+
+.orbit-particle.p2 {
+    right: 10%;
+    bottom: 20%;
+}
+
+.orbit-particle.p3 {
+    left: 35%;
+    bottom: -4px;
+}
+
+.orbit-particle.p4 {
+    left: 5%;
+    top: 30%;
+}
+
+
+/* Energy rings */
+
+.blob-ring {
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(255,0,127,.3);
+}
+
+.ring-outer {
+    width: 205px;
+    height: 205px;
+    transform: translate(-50%, -50%);
+    animation: ringSpin 12s linear infinite;
+}
+
+.ring-middle {
+    width: 175px;
+    height: 175px;
+    transform: translate(-50%, -50%);
+    border-color: rgba(79,172,254,.35);
+    animation: ringSpin 8s linear infinite reverse;
+}
+
+.ring-inner {
+    width: 150px;
+    height: 150px;
+    transform: translate(-50%, -50%);
+    border-style: dashed;
+    animation: ringSpin 5s linear infinite;
+}
+
+@keyframes ringSpin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+
+/* Energy arcs */
+
+.blob-energy-arc {
+    width: 195px;
+    height: 195px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: #ff007f;
+    border-right-color: #4facfe;
+    filter: drop-shadow(0 0 8px #ff007f);
+}
+
+.arc-1 {
+    animation: arcSpin 3s linear infinite;
+}
+
+.arc-2 {
+    transform: rotate(90deg);
+    animation: arcSpin 4s linear infinite reverse;
+}
+
+.arc-3 {
+    transform: rotate(180deg);
+    animation: arcSpin 5s linear infinite;
+}
+
+.arc-4 {
+    transform: rotate(270deg);
+    animation: arcSpin 6s linear infinite reverse;
+}
+
+@keyframes arcSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Blob body */
+
+.blob-body {
+    position: relative;
+    width: 155px;
+    height: 155px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.blob-glow {
+    position: absolute;
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    background: #ff007f;
+    filter: blur(35px);
+    opacity: .45;
+    animation: blobGlow 2.5s ease-in-out infinite alternate;
+}
+
+.layer-back,
+.layer-mid {
+    position: absolute;
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+}
+
+.layer-back {
+    background: #4facfe;
+    opacity: .4;
+    filter: blur(8px);
+    animation: layerBack 5s ease-in-out infinite;
+}
+
+.layer-mid {
+    background: #7b1fa2;
+    opacity: .55;
+    filter: blur(4px);
+    animation: layerMid 4s ease-in-out infinite reverse;
+}
+
+@keyframes layerBack {
+    50% {
+        transform: translate(-12px, 8px) scale(1.08);
+    }
+}
+
+@keyframes layerMid {
+    50% {
+        transform: translate(10px, -6px) scale(.92);
+    }
+}
+
+
+/* Main fluid */
 
 .anim-blob {
-position: relative;
+    position: relative;
+    width: 145px;
+    height: 145px;
+    overflow: hidden;
 
-width: 145px;
-height: 145px;
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ffffff 0%,
+            #ff8dcc 8%,
+            #ff007f 30%,
+            #7b1fa2 62%,
+            #4facfe 100%
+        );
 
-background:
-    linear-gradient(
+    border-radius:
+        60% 40% 30% 70% /
+        60% 30% 70% 40%;
+
+    box-shadow:
+        inset -20px -20px 35px rgba(0,0,0,.3),
+        inset 15px 15px 30px rgba(255,255,255,.2),
+        0 0 30px #ff007f,
+        0 0 75px rgba(255,0,127,.55);
+
+    animation:
+        blobMorph 5s ease-in-out infinite,
+        blobFloat 3s ease-in-out infinite;
+}
+
+
+/* Internal liquid */
+
+.blob-gradient {
+    position: absolute;
+    inset: -30%;
+    background:
+        conic-gradient(
+            from 0deg,
+            #ff007f,
+            #7b1fa2,
+            #4facfe,
+            #ff007f
+        );
+    opacity: .7;
+    filter: blur(15px);
+    animation: liquidRotate 5s linear infinite;
+}
+
+@keyframes liquidRotate {
+    to {
+        transform: rotate(360deg) scale(1.2);
+    }
+}
+
+
+/* Moving fluid blobs */
+
+.blob-fluid {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(8px);
+    mix-blend-mode: screen;
+}
+
+.fluid-a {
+    width: 85px;
+    height: 85px;
+    background: #ff4da6;
+    left: -20px;
+    bottom: -15px;
+    animation: fluidMoveA 4s ease-in-out infinite;
+}
+
+.fluid-b {
+    width: 70px;
+    height: 70px;
+    background: #4facfe;
+    right: -10px;
+    top: -10px;
+    animation: fluidMoveB 3.5s ease-in-out infinite;
+}
+
+.fluid-c {
+    width: 55px;
+    height: 55px;
+    background: #fff;
+    opacity: .35;
+    left: 40px;
+    top: 45px;
+    animation: fluidMoveC 2.5s ease-in-out infinite;
+}
+
+@keyframes fluidMoveA {
+    50% {
+        transform: translate(55px, -35px) scale(1.3);
+    }
+}
+
+@keyframes fluidMoveB {
+    50% {
+        transform: translate(-45px, 45px) scale(1.4);
+    }
+}
+
+@keyframes fluidMoveC {
+    50% {
+        transform: translate(15px, -20px) scale(.7);
+    }
+}
+
+
+/* Blob highlight */
+
+.blob-highlight {
+    position: absolute;
+    pointer-events: none;
+}
+
+.highlight-main {
+    width: 55px;
+    height: 35px;
+    left: 22px;
+    top: 18px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.35);
+    filter: blur(7px);
+    transform: rotate(-25deg);
+}
+
+.highlight-small {
+    width: 20px;
+    height: 20px;
+    left: 65px;
+    top: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.7);
+    filter: blur(4px);
+}
+
+
+/* Reflection */
+
+.blob-reflection {
+    position: absolute;
+    inset: 8px;
+    border-radius: inherit;
+    border: 1px solid rgba(255,255,255,.25);
+    background: linear-gradient(
         135deg,
-        #ff007f,
-        #7b1fa2 45%,
-        #4facfe
+        rgba(255,255,255,.12),
+        transparent 35%
     );
-
-border-radius:
-    60% 40% 30% 70% /
-    60% 30% 70% 40%;
-
-box-shadow:
-    inset -15px -15px 30px rgba(0,0,0,.2),
-    inset 15px 15px 30px rgba(255,255,255,.15),
-    0 0 50px rgba(255,0,127,.45);
-
-animation:
-    blobMorph 6s ease-in-out infinite,
-    blobFloat 4s ease-in-out infinite;
-
 }
 
-.anim-blob::after {
-content: "";
 
-position: absolute;
+/* Internal core */
 
-width: 45px;
-height: 45px;
-
-top: 25px;
-left: 30px;
-
-border-radius: 50%;
-
-background: rgba(255,255,255,.22);
-
-filter: blur(5px);
-
+.blob-core {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 38px;
+    height: 38px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
 }
+
+.core-glow {
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: white;
+    filter: blur(15px);
+    opacity: .3;
+    animation: coreGlow 1.5s ease-in-out infinite alternate;
+}
+
+.core-light {
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, white, #ffb7df 30%, transparent 70%);
+    box-shadow: 0 0 20px white;
+}
+
+@keyframes coreGlow {
+    from {
+        transform: scale(.6);
+        opacity: .2;
+    }
+
+    to {
+        transform: scale(1.4);
+        opacity: .7;
+    }
+}
+
+
+/* Internal particles */
+
+.blob-core-particles i {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 8px white;
+    animation: coreParticle 2s linear infinite;
+}
+
+.blob-core-particles i:nth-child(1) { left: 20%; top: 30%; }
+.blob-core-particles i:nth-child(2) { left: 70%; top: 20%; animation-delay: -.2s; }
+.blob-core-particles i:nth-child(3) { left: 80%; top: 60%; animation-delay: -.4s; }
+.blob-core-particles i:nth-child(4) { left: 35%; top: 75%; animation-delay: -.6s; }
+.blob-core-particles i:nth-child(5) { left: 10%; top: 60%; animation-delay: -.8s; }
+.blob-core-particles i:nth-child(6) { left: 55%; top: 10%; animation-delay: -1s; }
+.blob-core-particles i:nth-child(7) { left: 60%; top: 80%; animation-delay: -1.2s; }
+.blob-core-particles i:nth-child(8) { left: 25%; top: 50%; animation-delay: -1.4s; }
+
+@keyframes coreParticle {
+    50% {
+        transform: translate(10px, -10px) scale(1.8);
+        opacity: .4;
+    }
+}
+
+
+/* Shockwaves */
+
+.blob-shockwave {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #ff007f;
+    opacity: 0;
+    animation: shockwave 3s ease-out infinite;
+}
+
+.shockwave-2 {
+    animation-delay: 1s;
+    border-color: #7b1fa2;
+}
+
+.shockwave-3 {
+    animation-delay: 2s;
+    border-color: #4facfe;
+}
+
+@keyframes shockwave {
+    0% {
+        transform: scale(.4);
+        opacity: .7;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+
+/* Energy droplets */
+
+.blob-droplets {
+    inset: 0;
+}
+
+.blob-droplets span {
+    position: absolute;
+    width: 6px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ff007f;
+    box-shadow: 0 0 12px #ff007f;
+    animation: droplet 3s ease-in-out infinite;
+}
+
+.blob-droplets span:nth-child(1) { left: 15%; top: 25%; }
+.blob-droplets span:nth-child(2) { right: 15%; top: 35%; animation-delay: -.5s; }
+.blob-droplets span:nth-child(3) { left: 25%; bottom: 15%; animation-delay: -1s; }
+.blob-droplets span:nth-child(4) { right: 25%; bottom: 20%; animation-delay: -1.5s; }
+.blob-droplets span:nth-child(5) { left: 8%; top: 60%; animation-delay: -2s; }
+.blob-droplets span:nth-child(6) { right: 8%; top: 65%; animation-delay: -2.5s; }
+
+@keyframes droplet {
+    50% {
+        transform: translateY(-20px) scale(1.5);
+        opacity: .3;
+    }
+}
+
+
+/* Filaments */
+
+.blob-filaments {
+    inset: 0;
+}
+
+.filament {
+    position: absolute;
+    width: 90px;
+    height: 2px;
+    left: 50%;
+    top: 50%;
+    transform-origin: left center;
+    background: linear-gradient(
+        90deg,
+        rgba(255,0,127,0),
+        #ff007f,
+        rgba(79,172,254,0)
+    );
+    filter: blur(.5px);
+    animation: filamentPulse 2s ease-in-out infinite;
+}
+
+.filament-1 { transform: rotate(10deg); }
+.filament-2 { transform: rotate(70deg); animation-delay: -.3s; }
+.filament-3 { transform: rotate(130deg); animation-delay: -.6s; }
+.filament-4 { transform: rotate(190deg); animation-delay: -.9s; }
+.filament-5 { transform: rotate(250deg); animation-delay: -1.2s; }
+.filament-6 { transform: rotate(310deg); animation-delay: -1.5s; }
+
+@keyframes filamentPulse {
+    0%, 100% {
+        transform-origin: left center;
+        scale: .6;
+        opacity: .15;
+    }
+
+    50% {
+        scale: 1.2;
+        opacity: .8;
+    }
+}
+
+
+/* Final bloom */
+
+.blob-bloom {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: white;
+    filter: blur(45px);
+    opacity: .05;
+    animation: bloom 2s ease-in-out infinite alternate;
+}
+
+@keyframes bloom {
+    from {
+        transform: scale(.6);
+    }
+
+    to {
+        transform: scale(1.5);
+        opacity: .2;
+    }
+}
+
+
+/* Main animation */
 
 @keyframes blobMorph {
-0%, 100% {
-border-radius:
-60% 40% 30% 70% /
-60% 30% 70% 40%;
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(0deg) scale(1);
+    }
 
-    transform: rotate(0deg) scale(1);
-}
+    25% {
+        border-radius: 35% 65% 55% 45% / 45% 55% 65% 35%;
+        transform: rotate(90deg) scale(1.08);
+    }
 
-50% {
-    border-radius:
-        30% 60% 70% 40% /
-        50% 60% 30% 50%;
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 50%;
+        transform: rotate(180deg) scale(1.15);
+    }
 
-    transform: rotate(180deg) scale(1.1);
-}
+    75% {
+        border-radius: 65% 35% 45% 55% / 35% 65% 45% 55%;
+        transform: rotate(270deg) scale(1.05);
+    }
 
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(360deg) scale(1);
+    }
 }
 
 @keyframes blobFloat {
-0%, 100% {
-translate: 0 -8px;
-}
+    0%, 100% {
+        translate: 0 -8px;
+    }
 
-50% {
-    translate: 0 8px;
-}
-
+    50% {
+        translate: 0 8px;
+    }
 }
 
 @keyframes blobGlow {
-from {
-transform: scale(.8);
-opacity: .25;
+    from {
+        transform: scale(.7);
+        opacity: .25;
+    }
+
+    to {
+        transform: scale(1.25);
+        opacity: .6;
+    }
 }
 
-to {
-    transform: scale(1.2);
-    opacity: .45;
-}
 
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .anim-blob-wrapper *,
+    .anim-blob-wrapper *::before,
+    .anim-blob-wrapper *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }
