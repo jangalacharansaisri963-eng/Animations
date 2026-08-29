@@ -1,0 +1,181 @@
+.modal {
+position: fixed;
+inset: 0;
+z-index: 1000;
+
+display: none;
+
+align-items: center;
+justify-content: center;
+
+padding: 20px;
+
+background: rgba(5, 7, 12, 0.82);
+
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+
+opacity: 0;
+transition: opacity 0.25s ease;
+
+}
+
+.modal.active {
+display: flex;
+opacity: 1;
+}
+
+.player-card {
+position: relative;
+
+width: min(420px, 100%);
+
+padding: 26px;
+
+display: flex;
+flex-direction: column;
+align-items: center;
+
+background:
+    linear-gradient(
+        145deg,
+        #202535,
+        #151823
+    );
+
+border: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 26px;
+
+box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.75);
+
+transform: translateY(15px) scale(0.97);
+transition: transform 0.3s ease;
+
+}
+
+.modal.active .player-card {
+transform: translateY(0) scale(1);
+}
+
+.close-btn {
+position: absolute;
+top: 15px;
+right: 15px;
+
+width: 34px;
+height: 34px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border: none;
+border-radius: 50%;
+
+background: rgba(255, 255, 255, 0.07);
+color: #94a3b8;
+
+font-size: 16px;
+
+cursor: pointer;
+
+transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+
+}
+
+.close-btn:hover {
+background: rgba(255, 255, 255, 0.14);
+color: #ffffff;
+transform: rotate(90deg);
+}
+
+.player-title {
+margin-top: 4px;
+
+color: #f8fafc;
+
+font-size: 20px;
+font-weight: 700;
+
+text-align: center;
+
+}
+
+.player-subtitle {
+margin-top: 4px;
+
+color: #64748b;
+
+font-size: 12px;
+text-align: center;
+
+}
+
+.animation-stage {
+width: 300px;
+height: 300px;
+
+max-width: 100%;
+
+margin: 16px 0;
+
+position: relative;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+overflow: hidden;
+
+border-radius: 20px;
+
+background:
+    radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.035),
+        rgba(0, 0, 0, 0.08)
+    );
+
+}
+
+.play-btn.playing {
+background: transparent;
+color: #fb7185;
+
+border: 1px solid #fb7185;
+
+box-shadow: none;
+
+}
+
+.play-btn.playing:hover {
+background: rgba(251, 113, 133, 0.1);
+
+box-shadow:
+    0 0 18px rgba(251, 113, 133, 0.15);
+
+}
+
+@media (max-width: 480px) {
+.player-card {
+padding: 22px;
+}
+
+.animation-stage {
+    width: 270px;
+    height: 270px;
+}
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+.modal,
+.player-card,
+.close-btn {
+transition: none;
+}
+}

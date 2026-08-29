@@ -1,0 +1,250 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+body {
+font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+min-height: 100vh;
+padding: 20px;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+background:
+    radial-gradient(circle at top, #1b2030, #0b0d13 65%);
+
+color: #ffffff;
+
+}
+
+.app-store {
+width: 100%;
+max-width: 460px;
+
+background: rgba(24, 26, 38, 0.94);
+
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 24px;
+
+overflow: hidden;
+
+box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.65),
+    0 0 40px rgba(56, 189, 248, 0.05);
+
+}
+
+.header {
+padding: 26px 22px 20px;
+
+border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+}
+
+.header h1 {
+font-size: 24px;
+font-weight: 700;
+letter-spacing: -0.5px;
+
+background: linear-gradient(
+    90deg,
+    #ffffff,
+    #7dd3fc
+);
+
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+
+}
+
+.header p {
+margin-top: 6px;
+
+color: #94a3b8;
+font-size: 13px;
+
+}
+
+.app-list {
+padding: 8px 0;
+}
+
+.app-item {
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+padding: 15px 20px;
+
+border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+
+transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+
+}
+
+.app-item:last-child {
+border-bottom: none;
+}
+
+.app-item:hover {
+background: rgba(255, 255, 255, 0.035);
+}
+
+.app-info {
+display: flex;
+align-items: center;
+gap: 15px;
+
+min-width: 0;
+
+}
+
+.app-icon {
+width: 52px;
+height: 52px;
+
+flex-shrink: 0;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 15px;
+
+font-size: 22px;
+
+box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.3);
+
+}
+
+.app-details {
+min-width: 0;
+}
+
+.app-details h3 {
+color: #f8fafc;
+
+font-size: 15px;
+font-weight: 600;
+
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+
+}
+
+.app-details span {
+display: block;
+
+margin-top: 3px;
+
+color: #64748b;
+font-size: 12px;
+
+}
+
+.play-btn {
+flex-shrink: 0;
+
+border: none;
+border-radius: 20px;
+
+padding: 8px 18px;
+
+background: #38bdf8;
+color: #07111a;
+
+font-size: 12px;
+font-weight: 700;
+
+letter-spacing: 0.5px;
+text-transform: uppercase;
+
+cursor: pointer;
+
+transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+
+}
+
+.play-btn:hover {
+background: #7dd3fc;
+
+transform: scale(1.05);
+
+box-shadow:
+    0 0 18px rgba(56, 189, 248, 0.35);
+
+}
+
+.play-btn:active {
+transform: scale(0.96);
+}
+
+.icon-blob {
+background: linear-gradient(
+135deg,
+#ff007f,
+#7b1fa2
+);
+}
+
+.icon-spinner {
+background: linear-gradient(
+135deg,
+#00f2fe,
+#4facfe
+);
+}
+
+.icon-pulse {
+background: linear-gradient(
+135deg,
+#f97316,
+#eab308
+);
+}
+
+.icon-orbit {
+background: linear-gradient(
+135deg,
+#8b5cf6,
+#4c1d95
+);
+}
+
+.icon-dna {
+background: linear-gradient(
+135deg,
+#00f2fe,
+#a855f7
+);
+}
+
+@media (max-width: 480px) {
+body {
+padding: 12px;
+}
+
+.app-store {
+    border-radius: 20px;
+}
+
+.app-item {
+    padding: 14px 16px;
+}
+
+.play-btn {
+    padding: 8px 14px;
+}
+
+}
