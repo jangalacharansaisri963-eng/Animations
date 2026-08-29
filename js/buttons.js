@@ -7,7 +7,6 @@ function createAnimationButton(animation) {
 
     const icon = document.createElement("div");
     icon.className = `app-icon icon-${animation.name}`;
-
     icon.textContent = getAnimationIcon(animation.name);
 
     const details = document.createElement("div");
@@ -99,6 +98,13 @@ function openAnimation(name) {
     modal.classList.add("active");
     modal.setAttribute("aria-hidden", "false");
 
+    // The Play button is a user interaction,
+    // so unlock Web Audio immediately.
+    if (typeof unlockAudio === "function") {
+        unlockAudio();
+    }
+
+    // Play the selected animation's sound.
     if (typeof playAnimationSound === "function") {
         playAnimationSound(name);
     }
