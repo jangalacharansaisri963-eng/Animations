@@ -1,0 +1,1892 @@
+.anim-black-hole {
+    --bh-purple: #8b5cf6;
+    --bh-violet: #6d28d9;
+    --bh-blue: #2563eb;
+    --bh-pink: #ec4899;
+    --bh-white: #f8fafc;
+    --bh-space: #010106;
+
+    position: relative;
+    width: min(90vw, 520px);
+    height: min(90vw, 520px);
+    min-width: 280px;
+    min-height: 280px;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            #000 0 13%,
+            #030008 24%,
+            #070014 43%,
+            #0b0320 62%,
+            #020207 82%,
+            #000 100%
+        );
+
+    box-shadow:
+        inset 0 0 70px #000,
+        inset 0 0 150px rgba(76, 29, 149, .28),
+        0 0 40px rgba(124, 58, 237, .25),
+        0 0 120px rgba(76, 29, 149, .15);
+
+    transform: translateZ(0);
+
+    animation:
+        blackHoleAtmosphere 8s ease-in-out infinite;
+}
+
+.anim-black-hole > * {
+    position: absolute;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.black-hole-space {
+    inset: -15%;
+    z-index: 1;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 50%,
+            transparent 0 30%,
+            rgba(76, 29, 149, .08) 48%,
+            rgba(37, 99, 235, .05) 62%,
+            transparent 76%
+        );
+
+    animation:
+        spaceDrift 18s ease-in-out infinite alternate;
+}
+
+.black-hole-stars {
+    inset: 0;
+    z-index: 3;
+
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.black-hole-stars i {
+    position: absolute;
+
+    display: block;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 4px rgba(255, 255, 255, .8);
+
+    animation:
+        starTwinkle 2s ease-in-out infinite alternate;
+}
+
+.stars-far i {
+    opacity: .35;
+    transform: scale(.55);
+}
+
+.stars-mid {
+    z-index: 4;
+}
+
+.stars-mid i {
+    width: 2px;
+    height: 2px;
+
+    opacity: .6;
+
+    animation-duration: 1.7s;
+}
+
+.stars-near {
+    z-index: 5;
+}
+
+.stars-near i {
+    width: 3px;
+    height: 3px;
+
+    opacity: .9;
+
+    box-shadow:
+        0 0 7px #fff,
+        0 0 14px rgba(139, 92, 246, .8);
+
+    animation-duration: 1.2s;
+}
+
+.black-hole-nebula {
+    inset: -20%;
+    z-index: 2;
+
+    border-radius: 50%;
+
+    filter: blur(25px);
+    opacity: .55;
+
+    mix-blend-mode: screen;
+}
+
+.nebula-cloud {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(35px);
+    opacity: .35;
+
+    animation:
+        nebulaFloat 9s ease-in-out infinite alternate;
+}
+
+.nebula-1 {
+    width: 45%;
+    height: 25%;
+
+    top: 18%;
+    left: 5%;
+
+    background: #7c3aed;
+
+    transform: rotate(-25deg);
+}
+
+.nebula-2 {
+    width: 50%;
+    height: 22%;
+
+    right: -4%;
+    top: 30%;
+
+    background: #2563eb;
+
+    transform: rotate(30deg);
+
+    animation-delay: -2s;
+}
+
+.nebula-3 {
+    width: 40%;
+    height: 20%;
+
+    left: 10%;
+    bottom: 12%;
+
+    background: #ec4899;
+
+    transform: rotate(20deg);
+
+    animation-delay: -4s;
+}
+
+.nebula-4 {
+    width: 38%;
+    height: 18%;
+
+    right: 8%;
+    bottom: 10%;
+
+    background: #8b5cf6;
+
+    animation-delay: -6s;
+}
+
+.black-hole-lens {
+    top: 50%;
+    left: 50%;
+
+    width: 86%;
+    height: 86%;
+
+    z-index: 8;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    animation:
+        lensWarp 7s ease-in-out infinite;
+}
+
+.lens-distortion {
+    position: absolute;
+
+    inset: 5%;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(167, 139, 250, .18);
+
+    box-shadow:
+        inset 0 0 35px rgba(124, 58, 237, .2),
+        0 0 35px rgba(124, 58, 237, .12);
+
+    animation:
+        lensPulse 4s ease-in-out infinite;
+}
+
+.lens-ring {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(139, 92, 246, .35);
+
+    box-shadow:
+        0 0 12px rgba(139, 92, 246, .25);
+}
+
+.lens-ring-outer {
+    width: 96%;
+    height: 54%;
+}
+
+.lens-ring-middle {
+    width: 82%;
+    height: 43%;
+}
+
+.lens-ring-inner {
+    width: 68%;
+    height: 35%;
+}
+
+.black-hole-jets {
+    inset: 0;
+    z-index: 9;
+
+    overflow: visible;
+}
+
+.jet {
+    position: absolute;
+
+    left: 50%;
+
+    width: 16%;
+    height: 48%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    filter: blur(8px);
+    opacity: .45;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(139, 92, 246, .8),
+            rgba(96, 165, 250, .35),
+            transparent
+        );
+
+    animation:
+        jetPulse 2.8s ease-in-out infinite;
+}
+
+.jet-top {
+    bottom: 51%;
+
+    transform-origin: bottom center;
+}
+
+.jet-bottom {
+    top: 51%;
+
+    transform:
+        translateX(-50%)
+        rotate(180deg);
+
+    transform-origin: top center;
+
+    animation-delay: -1.4s;
+}
+
+.jet span {
+    position: absolute;
+
+    left: 50%;
+
+    width: 35%;
+    height: 15%;
+
+    border-radius: 50%;
+
+    background: #c4b5fd;
+
+    box-shadow:
+        0 0 15px #8b5cf6;
+
+    transform: translateX(-50%);
+}
+
+.black-hole-disk {
+    top: 50%;
+    left: 50%;
+
+    width: 92%;
+    height: 46%;
+
+    z-index: 12;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-8deg);
+
+    border-radius: 50%;
+
+    filter:
+        drop-shadow(0 0 15px rgba(139, 92, 246, .55));
+
+    animation:
+        diskRotation 7s linear infinite;
+}
+
+.disk-layer {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+    border-style: solid;
+
+    mix-blend-mode: screen;
+}
+
+.disk-layer-outer {
+    border-width: 12px;
+
+    border-color:
+        rgba(59, 130, 246, .25)
+        transparent
+        rgba(139, 92, 246, .55)
+        transparent;
+}
+
+.disk-layer-wide {
+    inset: 8%;
+
+    border-width: 15px;
+
+    border-color:
+        rgba(236, 72, 153, .35)
+        transparent
+        rgba(124, 58, 237, .7)
+        transparent;
+}
+
+.disk-layer-hot {
+    inset: 17%;
+
+    border-width: 10px;
+
+    border-color:
+        rgba(255, 255, 255, .6)
+        rgba(249, 115, 22, .7)
+        rgba(168, 85, 247, .75)
+        transparent;
+}
+
+.disk-layer-inner {
+    inset: 27%;
+
+    border-width: 7px;
+
+    border-color:
+        #fff
+        rgba(255, 255, 255, .4)
+        transparent
+        rgba(124, 58, 237, .8);
+}
+
+.disk-band {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 75%;
+    height: 2px;
+
+    border-radius: 50%;
+
+    transform-origin: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(167, 139, 250, .8),
+            #fff,
+            rgba(236, 72, 153, .7),
+            transparent
+        );
+
+    filter: blur(1px);
+
+    opacity: .55;
+
+    animation:
+        diskBandMove 3s ease-in-out infinite;
+}
+
+.band-1 {
+    transform: translate(-50%, -50%) rotate(4deg);
+}
+
+.band-2 {
+    transform: translate(-50%, -50%) rotate(-7deg);
+    animation-delay: -.6s;
+}
+
+.band-3 {
+    transform: translate(-50%, -50%) rotate(13deg);
+    animation-delay: -1.2s;
+}
+
+.band-4 {
+    transform: translate(-50%, -50%) rotate(-16deg);
+    animation-delay: -1.8s;
+}
+
+.band-5 {
+    transform: translate(-50%, -50%) rotate(22deg);
+    animation-delay: -2.4s;
+}
+
+.disk-hotspot {
+    position: absolute;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 8px #fff,
+        0 0 18px #f0abfc,
+        0 0 35px #ec4899;
+
+    animation:
+        hotspotPulse 1.4s ease-in-out infinite;
+}
+
+.hotspot-1 { top: 19%; left: 27%; }
+.hotspot-2 { top: 31%; left: 67%; animation-delay: -.3s; }
+.hotspot-3 { top: 52%; left: 18%; animation-delay: -.6s; }
+.hotspot-4 { top: 67%; left: 72%; animation-delay: -.9s; }
+.hotspot-5 { top: 74%; left: 39%; animation-delay: -1.2s; }
+.hotspot-6 { top: 38%; left: 44%; animation-delay: -1.5s; }
+
+.infalling-matter {
+    inset: 0;
+    z-index: 14;
+
+    overflow: hidden;
+    border-radius: 50%;
+
+    transform: rotate(-8deg);
+}
+
+.infalling-matter span {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    left: 50%;
+    top: 50%;
+
+    border-radius: 50%;
+
+    background: #c4b5fd;
+
+    box-shadow:
+        0 0 6px #a78bfa,
+        0 0 14px rgba(139, 92, 246, .8);
+
+    transform-origin: 0 0;
+
+    animation:
+        matterFall var(--matter-speed, 3s) linear infinite;
+
+    animation-delay:
+        var(--matter-delay, 0s);
+}
+
+.infalling-matter span:nth-child(3n) {
+    width: 5px;
+    height: 2px;
+
+    background: #f0abfc;
+
+    box-shadow:
+        0 0 8px #ec4899,
+        0 0 18px rgba(236, 72, 153, .7);
+}
+
+.infalling-matter span:nth-child(4n) {
+    width: 2px;
+    height: 5px;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 7px #fff,
+        0 0 15px #a78bfa;
+}
+
+.infalling-matter span:nth-child(1) {
+    --matter-angle: 8deg;
+    --matter-radius: 210px;
+    --matter-speed: 2.4s;
+}
+
+.infalling-matter span:nth-child(2) {
+    --matter-angle: 31deg;
+    --matter-radius: 180px;
+    --matter-speed: 3.1s;
+}
+
+.infalling-matter span:nth-child(3) {
+    --matter-angle: 54deg;
+    --matter-radius: 230px;
+    --matter-speed: 2.7s;
+}
+
+.infalling-matter span:nth-child(4) {
+    --matter-angle: 79deg;
+    --matter-radius: 195px;
+    --matter-speed: 3.4s;
+}
+
+.infalling-matter span:nth-child(5) {
+    --matter-angle: 103deg;
+    --matter-radius: 220px;
+    --matter-speed: 2.8s;
+}
+
+.infalling-matter span:nth-child(6) {
+    --matter-angle: 127deg;
+    --matter-radius: 170px;
+    --matter-speed: 3.2s;
+}
+
+.infalling-matter span:nth-child(7) {
+    --matter-angle: 151deg;
+    --matter-radius: 235px;
+    --matter-speed: 2.5s;
+}
+
+.infalling-matter span:nth-child(8) {
+    --matter-angle: 177deg;
+    --matter-radius: 205px;
+    --matter-speed: 3.6s;
+}
+
+.infalling-matter span:nth-child(9) {
+    --matter-angle: 201deg;
+    --matter-radius: 190px;
+    --matter-speed: 2.9s;
+}
+
+.infalling-matter span:nth-child(10) {
+    --matter-angle: 226deg;
+    --matter-radius: 225px;
+    --matter-speed: 3.3s;
+}
+
+.infalling-matter span:nth-child(11) {
+    --matter-angle: 249deg;
+    --matter-radius: 175px;
+    --matter-speed: 2.6s;
+}
+
+.infalling-matter span:nth-child(12) {
+    --matter-angle: 274deg;
+    --matter-radius: 215px;
+    --matter-speed: 3.5s;
+}
+
+.infalling-matter span:nth-child(13) {
+    --matter-angle: 298deg;
+    --matter-radius: 185px;
+    --matter-speed: 2.3s;
+}
+
+.infalling-matter span:nth-child(14) {
+    --matter-angle: 324deg;
+    --matter-radius: 240px;
+    --matter-speed: 3s;
+}
+
+.infalling-matter span:nth-child(15) {
+    --matter-angle: 347deg;
+    --matter-radius: 200px;
+    --matter-speed: 2.7s;
+}
+
+.infalling-matter span:nth-child(n+16) {
+    opacity: .65;
+    transform: scale(.75);
+}
+
+.photon-rings {
+    top: 50%;
+    left: 50%;
+
+    width: 44%;
+    height: 44%;
+
+    z-index: 18;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    animation:
+        photonSpin 5s linear infinite;
+}
+
+.photon-ring {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 2px solid transparent;
+}
+
+.photon-ring-outer {
+    width: 118%;
+    height: 62%;
+
+    border-top-color: #a78bfa;
+
+    box-shadow:
+        0 -2px 18px rgba(167, 139, 250, .8);
+}
+
+.photon-ring-main {
+    width: 104%;
+    height: 55%;
+
+    border-bottom-color: #f0abfc;
+
+    box-shadow:
+        0 3px 22px rgba(236, 72, 153, .65);
+}
+
+.photon-ring-inner {
+    width: 88%;
+    height: 48%;
+
+    border-top-color: #fff;
+
+    opacity: .8;
+}
+
+.black-hole-horizon {
+    top: 50%;
+    left: 50%;
+
+    width: 38%;
+    height: 38%;
+
+    z-index: 25;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.horizon-aura,
+.horizon-glow,
+.horizon {
+    position: absolute;
+
+    border-radius: 50%;
+}
+
+.horizon-aura {
+    inset: -35%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139, 92, 246, .35),
+            rgba(76, 29, 149, .15) 45%,
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+    animation:
+        horizonAura 2.5s ease-in-out infinite;
+}
+
+.horizon-glow {
+    inset: -12%;
+
+    border: 4px solid rgba(139, 92, 246, .5);
+
+    box-shadow:
+        0 0 20px #7c3aed,
+        0 0 50px rgba(124, 58, 237, .75);
+}
+
+.horizon {
+    inset: 0;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 40% 35%,
+            #111 0%,
+            #020204 38%,
+            #000 72%
+        );
+
+    box-shadow:
+        inset 0 0 30px #000,
+        0 0 30px rgba(0, 0, 0, .95);
+}
+
+.horizon-core {
+    position: absolute;
+
+    inset: 8%;
+
+    border-radius: 50%;
+
+    background: #000;
+
+    box-shadow:
+        inset 0 0 30px #000;
+}
+
+.horizon-reflection {
+    position: absolute;
+
+    width: 42%;
+    height: 18%;
+
+    top: 18%;
+    left: 20%;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, .08);
+
+    filter: blur(5px);
+
+    transform: rotate(-20deg);
+}
+
+.horizon-shadow {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    box-shadow:
+        inset 15px -10px 35px rgba(0, 0, 0, .95);
+}
+
+.black-hole-particles {
+    inset: 0;
+    z-index: 22;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    animation:
+        particleField 12s linear infinite;
+}
+
+.black-hole-particles span {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 5px #fff,
+        0 0 12px #8b5cf6;
+
+    animation:
+        particleOrbit var(--particle-duration, 5s)
+        linear infinite;
+
+    animation-delay:
+        var(--particle-delay, 0s);
+
+    transform-origin:
+        var(--particle-radius, 120px) 0;
+}
+
+.black-hole-particles span:nth-child(3n) {
+    width: 4px;
+    height: 4px;
+
+    background: #a78bfa;
+
+    box-shadow:
+        0 0 8px #a78bfa,
+        0 0 18px #7c3aed;
+}
+
+.black-hole-particles span:nth-child(5n) {
+    width: 2px;
+    height: 2px;
+
+    background: #67e8f9;
+
+    box-shadow:
+        0 0 7px #22d3ee;
+}
+
+.black-hole-particles span:nth-child(1) {
+    --particle-radius: 155px;
+    --particle-duration: 5.2s;
+    --particle-delay: -.4s;
+}
+
+.black-hole-particles span:nth-child(2) {
+    --particle-radius: 180px;
+    --particle-duration: 7.1s;
+    --particle-delay: -2s;
+}
+
+.black-hole-particles span:nth-child(3) {
+    --particle-radius: 125px;
+    --particle-duration: 4.1s;
+    --particle-delay: -1s;
+}
+
+.black-hole-particles span:nth-child(4) {
+    --particle-radius: 205px;
+    --particle-duration: 8.4s;
+    --particle-delay: -4s;
+}
+
+.black-hole-particles span:nth-child(5) {
+    --particle-radius: 145px;
+    --particle-duration: 5.8s;
+    --particle-delay: -3s;
+}
+
+.black-hole-particles span:nth-child(6) {
+    --particle-radius: 195px;
+    --particle-duration: 7.6s;
+    --particle-delay: -5s;
+}
+
+.black-hole-particles span:nth-child(7) {
+    --particle-radius: 170px;
+    --particle-duration: 6.3s;
+    --particle-delay: -1.5s;
+}
+
+.black-hole-particles span:nth-child(8) {
+    --particle-radius: 220px;
+    --particle-duration: 9s;
+    --particle-delay: -6s;
+}
+
+.gravity-arcs {
+    inset: 0;
+    z-index: 17;
+
+    border-radius: 50%;
+}
+
+.gravity-arc {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    border-radius: 50%;
+
+    border: 1px solid transparent;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(var(--arc-angle));
+
+    opacity: .5;
+
+    animation:
+        gravityArcPulse 3s ease-in-out infinite;
+}
+
+.arc-1 {
+    width: 91%;
+    height: 38%;
+
+    --arc-angle: 18deg;
+
+    border-top-color: #8b5cf6;
+}
+
+.arc-2 {
+    width: 82%;
+    height: 33%;
+
+    --arc-angle: 62deg;
+
+    border-right-color: #ec4899;
+
+    animation-delay: -.5s;
+}
+
+.arc-3 {
+    width: 75%;
+    height: 29%;
+
+    --arc-angle: 108deg;
+
+    border-bottom-color: #60a5fa;
+
+    animation-delay: -1s;
+}
+
+.arc-4 {
+    width: 67%;
+    height: 26%;
+
+    --arc-angle: 151deg;
+
+    border-left-color: #a78bfa;
+
+    animation-delay: -1.5s;
+}
+
+.arc-5 {
+    width: 58%;
+    height: 23%;
+
+    --arc-angle: 204deg;
+
+    border-top-color: #f0abfc;
+
+    animation-delay: -2s;
+}
+
+.arc-6 {
+    width: 49%;
+    height: 20%;
+
+    --arc-angle: 247deg;
+
+    border-right-color: #67e8f9;
+
+    animation-delay: -2.5s;
+}
+
+.spacetime-waves {
+    inset: 0;
+    z-index: 7;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+}
+
+.spacetime-waves div {
+    position: absolute;
+
+    width: 20%;
+    height: 20%;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(139, 92, 246, .4);
+
+    animation:
+        spacetimeExpand 4s ease-out infinite;
+}
+
+.spacetime-waves div:nth-child(2) {
+    animation-delay: .8s;
+}
+
+.spacetime-waves div:nth-child(3) {
+    animation-delay: 1.6s;
+}
+
+.spacetime-waves div:nth-child(4) {
+    animation-delay: 2.4s;
+}
+
+.spacetime-waves div:nth-child(5) {
+    animation-delay: 3.2s;
+}
+
+.gravity-streaks {
+    inset: 0;
+    z-index: 11;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    transform: rotate(-12deg);
+}
+
+.gravity-streaks div {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: var(--streak-width, 80px);
+    height: 1px;
+
+    transform:
+        rotate(var(--streak-angle))
+        translateX(var(--streak-distance));
+
+    transform-origin: left center;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(167, 139, 250, .8),
+            rgba(255, 255, 255, .9),
+            transparent
+        );
+
+    filter: blur(.3px);
+
+    opacity: .65;
+
+    animation:
+        streakWarp var(--streak-speed, 2.5s)
+        ease-in-out infinite;
+}
+
+.gravity-streaks div:nth-child(1) {
+    --streak-angle: 4deg;
+    --streak-distance: 100px;
+    --streak-width: 100px;
+    --streak-speed: 2.1s;
+}
+
+.gravity-streaks div:nth-child(2) {
+    --streak-angle: 18deg;
+    --streak-distance: 120px;
+    --streak-width: 80px;
+    --streak-speed: 3s;
+}
+
+.gravity-streaks div:nth-child(3) {
+    --streak-angle: 35deg;
+    --streak-distance: 90px;
+    --streak-width: 120px;
+    --streak-speed: 2.4s;
+}
+
+.gravity-streaks div:nth-child(4) {
+    --streak-angle: 51deg;
+    --streak-distance: 140px;
+    --streak-width: 75px;
+    --streak-speed: 3.4s;
+}
+
+.gravity-streaks div:nth-child(5) {
+    --streak-angle: 72deg;
+    --streak-distance: 110px;
+    --streak-width: 95px;
+    --streak-speed: 2.7s;
+}
+
+.gravity-streaks div:nth-child(6) {
+    --streak-angle: 93deg;
+    --streak-distance: 130px;
+    --streak-width: 110px;
+    --streak-speed: 3.1s;
+}
+
+.gravity-streaks div:nth-child(7) {
+    --streak-angle: 116deg;
+    --streak-distance: 100px;
+    --streak-width: 85px;
+    --streak-speed: 2.2s;
+}
+
+.gravity-streaks div:nth-child(8) {
+    --streak-angle: 139deg;
+    --streak-distance: 125px;
+    --streak-width: 115px;
+    --streak-speed: 2.9s;
+}
+
+.gravity-streaks div:nth-child(9) {
+    --streak-angle: 162deg;
+    --streak-distance: 105px;
+    --streak-width: 90px;
+    --streak-speed: 3.6s;
+}
+
+.gravity-streaks div:nth-child(10) {
+    --streak-angle: 187deg;
+    --streak-distance: 135px;
+    --streak-width: 100px;
+    --streak-speed: 2.5s;
+}
+
+.gravity-streaks div:nth-child(11) {
+    --streak-angle: 211deg;
+    --streak-distance: 95px;
+    --streak-width: 75px;
+    --streak-speed: 3.3s;
+}
+
+.gravity-streaks div:nth-child(12) {
+    --streak-angle: 234deg;
+    --streak-distance: 120px;
+    --streak-width: 105px;
+    --streak-speed: 2.6s;
+}
+
+.gravity-streaks div:nth-child(13) {
+    --streak-angle: 258deg;
+    --streak-distance: 145px;
+    --streak-width: 80px;
+    --streak-speed: 3.5s;
+}
+
+.gravity-streaks div:nth-child(14) {
+    --streak-angle: 281deg;
+    --streak-distance: 100px;
+    --streak-width: 115px;
+    --streak-speed: 2.3s;
+}
+
+.gravity-streaks div:nth-child(15) {
+    --streak-angle: 307deg;
+    --streak-distance: 130px;
+    --streak-width: 90px;
+    --streak-speed: 3.2s;
+}
+
+.gravity-streaks div:nth-child(16) {
+    --streak-angle: 332deg;
+    --streak-distance: 110px;
+    --streak-width: 105px;
+    --streak-speed: 2.8s;
+}
+
+.gravity-streaks div:nth-child(17) {
+    --streak-angle: 348deg;
+    --streak-distance: 140px;
+    --streak-width: 85px;
+    --streak-speed: 3.7s;
+}
+
+.gravity-streaks div:nth-child(18) {
+    --streak-angle: 65deg;
+    --streak-distance: 155px;
+    --streak-width: 70px;
+    --streak-speed: 2.4s;
+}
+
+.warp-particles {
+    inset: 0;
+    z-index: 20;
+
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.warp-particles b {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 6px #fff,
+        0 0 15px #8b5cf6;
+
+    animation:
+        warpParticle var(--warp-speed, 1.8s)
+        linear infinite;
+
+    animation-delay:
+        var(--warp-delay, 0s);
+}
+
+.warp-particles b:nth-child(odd) {
+    background: #c4b5fd;
+
+    box-shadow:
+        0 0 7px #a78bfa,
+        0 0 18px #7c3aed;
+}
+
+.warp-particles b:nth-child(1) {
+    --warp-speed: 1.4s;
+    --warp-delay: -.2s;
+}
+
+.warp-particles b:nth-child(2) {
+    --warp-speed: 1.8s;
+    --warp-delay: -.9s;
+}
+
+.warp-particles b:nth-child(3) {
+    --warp-speed: 2.2s;
+    --warp-delay: -1.3s;
+}
+
+.warp-particles b:nth-child(4) {
+    --warp-speed: 1.6s;
+    --warp-delay: -.7s;
+}
+
+.warp-particles b:nth-child(5) {
+    --warp-speed: 2.5s;
+    --warp-delay: -1.8s;
+}
+
+.warp-particles b:nth-child(6) {
+    --warp-speed: 1.9s;
+    --warp-delay: -.4s;
+}
+
+.warp-particles b:nth-child(7) {
+    --warp-speed: 1.3s;
+    --warp-delay: -1.1s;
+}
+
+.warp-particles b:nth-child(8) {
+    --warp-speed: 2.1s;
+    --warp-delay: -1.5s;
+}
+
+.warp-particles b:nth-child(9) {
+    --warp-speed: 1.7s;
+    --warp-delay: -.3s;
+}
+
+.warp-particles b:nth-child(10) {
+    --warp-speed: 2.3s;
+    --warp-delay: -2s;
+}
+
+.foreground-debris {
+    inset: 0;
+    z-index: 30;
+
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.foreground-debris i {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 5px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: #f5f3ff;
+
+    box-shadow:
+        0 0 8px #fff,
+        0 0 20px #8b5cf6;
+
+    transform:
+        rotate(var(--debris-angle))
+        translateX(var(--debris-distance));
+
+    animation:
+        debrisOrbit var(--debris-speed, 4s)
+        linear infinite;
+}
+
+.foreground-debris i:nth-child(1) {
+    --debris-angle: 15deg;
+    --debris-distance: 190px;
+    --debris-speed: 3.2s;
+}
+
+.foreground-debris i:nth-child(2) {
+    --debris-angle: 47deg;
+    --debris-distance: 175px;
+    --debris-speed: 4.1s;
+}
+
+.foreground-debris i:nth-child(3) {
+    --debris-angle: 83deg;
+    --debris-distance: 210px;
+    --debris-speed: 3.6s;
+}
+
+.foreground-debris i:nth-child(4) {
+    --debris-angle: 121deg;
+    --debris-distance: 185px;
+    --debris-speed: 4.7s;
+}
+
+.foreground-debris i:nth-child(5) {
+    --debris-angle: 158deg;
+    --debris-distance: 220px;
+    --debris-speed: 3.8s;
+}
+
+.foreground-debris i:nth-child(6) {
+    --debris-angle: 194deg;
+    --debris-distance: 170px;
+    --debris-speed: 4.4s;
+}
+
+.foreground-debris i:nth-child(7) {
+    --debris-angle: 231deg;
+    --debris-distance: 205px;
+    --debris-speed: 3.4s;
+}
+
+.foreground-debris i:nth-child(8) {
+    --debris-angle: 267deg;
+    --debris-distance: 190px;
+    --debris-speed: 4.9s;
+}
+
+.foreground-debris i:nth-child(9) {
+    --debris-angle: 302deg;
+    --debris-distance: 215px;
+    --debris-speed: 3.9s;
+}
+
+.foreground-debris i:nth-child(10) {
+    --debris-angle: 341deg;
+    --debris-distance: 180px;
+    --debris-speed: 4.3s;
+}
+
+.energy-sparks {
+    inset: 0;
+    z-index: 35;
+
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.energy-sparks span {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 8px #fff,
+        0 0 16px #a78bfa,
+        0 0 28px #7c3aed;
+
+    animation:
+        energySpark var(--spark-speed, 1.5s)
+        ease-in-out infinite;
+
+    animation-delay:
+        var(--spark-delay, 0s);
+}
+
+.energy-sparks span:nth-child(2n) {
+    width: 2px;
+    height: 8px;
+
+    background: #c4b5fd;
+}
+
+.energy-sparks span:nth-child(3n) {
+    background: #f0abfc;
+
+    box-shadow:
+        0 0 8px #f0abfc,
+        0 0 20px #ec4899;
+}
+
+.energy-sparks span:nth-child(1) {
+    --spark-angle: 10deg;
+    --spark-distance: 120px;
+    --spark-speed: 1.4s;
+}
+
+.energy-sparks span:nth-child(2) {
+    --spark-angle: 38deg;
+    --spark-distance: 145px;
+    --spark-speed: 1.9s;
+}
+
+.energy-sparks span:nth-child(3) {
+    --spark-angle: 71deg;
+    --spark-distance: 105px;
+    --spark-speed: 1.2s;
+}
+
+.energy-sparks span:nth-child(4) {
+    --spark-angle: 103deg;
+    --spark-distance: 155px;
+    --spark-speed: 2.1s;
+}
+
+.energy-sparks span:nth-child(5) {
+    --spark-angle: 137deg;
+    --spark-distance: 130px;
+    --spark-speed: 1.6s;
+}
+
+.energy-sparks span:nth-child(6) {
+    --spark-angle: 169deg;
+    --spark-distance: 115px;
+    --spark-speed: 1.8s;
+}
+
+.energy-sparks span:nth-child(7) {
+    --spark-angle: 205deg;
+    --spark-distance: 150px;
+    --spark-speed: 1.3s;
+}
+
+.energy-sparks span:nth-child(8) {
+    --spark-angle: 238deg;
+    --spark-distance: 125px;
+    --spark-speed: 2s;
+}
+
+.energy-sparks span:nth-child(9) {
+    --spark-angle: 274deg;
+    --spark-distance: 145px;
+    --spark-speed: 1.5s;
+}
+
+.energy-sparks span:nth-child(10) {
+    --spark-angle: 309deg;
+    --spark-distance: 110px;
+    --spark-speed: 1.7s;
+}
+
+.black-hole-glow {
+    inset: -10%;
+    z-index: 40;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 25%,
+            rgba(124, 58, 237, .08) 48%,
+            rgba(139, 92, 246, .12) 65%,
+            transparent 78%
+        );
+
+    filter: blur(18px);
+
+    animation:
+        glowPulse 3s ease-in-out infinite;
+}
+
+.black-hole-vignette {
+    inset: 0;
+    z-index: 50;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 0 42%,
+            rgba(0, 0, 0, .12) 58%,
+            rgba(0, 0, 0, .55) 82%,
+            rgba(0, 0, 0, .95) 100%
+        );
+}
+
+.black-hole-scanlines {
+    inset: 0;
+    z-index: 60;
+
+    border-radius: 50%;
+
+    opacity: .08;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 3px,
+            rgba(255, 255, 255, .08) 4px,
+            transparent 5px
+        );
+
+    mix-blend-mode: overlay;
+}
+
+@keyframes blackHoleAtmosphere {
+    0%, 100% {
+        filter: brightness(.9) saturate(1);
+    }
+
+    50% {
+        filter: brightness(1.12) saturate(1.18);
+    }
+}
+
+@keyframes spaceDrift {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08) rotate(2deg);
+    }
+}
+
+@keyframes starTwinkle {
+    from {
+        opacity: .25;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes nebulaFloat {
+    from {
+        transform:
+            translate3d(-3%, -2%, 0)
+            scale(.95);
+    }
+
+    to {
+        transform:
+            translate3d(4%, 3%, 0)
+            scale(1.08);
+    }
+}
+
+@keyframes lensWarp {
+    0%, 100% {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.035, .965);
+    }
+}
+
+@keyframes lensPulse {
+    50% {
+        opacity: .7;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes jetPulse {
+    50% {
+        opacity: .8;
+        filter: blur(5px);
+    }
+}
+
+@keyframes diskRotation {
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(352deg);
+    }
+}
+
+@keyframes diskBandMove {
+    0%, 100% {
+        opacity: .25;
+        scale: .8 1;
+    }
+
+    50% {
+        opacity: 1;
+        scale: 1.15 1;
+    }
+}
+
+@keyframes hotspotPulse {
+    0%, 100% {
+        transform: scale(.6);
+        opacity: .4;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+@keyframes photonSpin {
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(360deg);
+    }
+}
+
+@keyframes horizonAura {
+    50% {
+        transform: scale(1.15);
+        opacity: .8;
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: .5;
+        transform: scale(.98);
+    }
+
+    50% {
+        opacity: .9;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes matterFall {
+    0% {
+        transform:
+            rotate(var(--matter-angle))
+            translateX(var(--matter-radius))
+            scale(1.2);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: .9;
+    }
+
+    100% {
+        transform:
+            rotate(var(--matter-angle))
+            translateX(25px)
+            scale(.15);
+
+        opacity: 0;
+    }
+}
+
+@keyframes particleOrbit {
+    from {
+        transform:
+            rotate(0deg)
+            translateX(var(--particle-radius));
+    }
+
+    to {
+        transform:
+            rotate(360deg)
+            translateX(var(--particle-radius));
+    }
+}
+
+@keyframes particleField {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes gravityArcPulse {
+    0%, 100% {
+        opacity: .2;
+    }
+
+    50% {
+        opacity: .8;
+    }
+}
+
+@keyframes spacetimeExpand {
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(.5);
+
+        opacity: .8;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(5);
+
+        opacity: 0;
+    }
+}
+
+@keyframes streakWarp {
+    0%, 100% {
+        opacity: .15;
+        scale: .7;
+    }
+
+    50% {
+        opacity: 1;
+        scale: 1.2;
+    }
+}
+
+@keyframes warpParticle {
+    0% {
+        transform:
+            rotate(var(--warp-angle, 0deg))
+            translateX(15px)
+            scale(.2);
+
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            rotate(var(--warp-angle, 0deg))
+            translateX(240px)
+            scale(1.8);
+
+        opacity: 0;
+    }
+}
+
+@keyframes debrisOrbit {
+    from {
+        opacity: 0;
+
+        transform:
+            rotate(var(--debris-angle))
+            translateX(120px)
+            scale(.4);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            rotate(calc(var(--debris-angle) + 360deg))
+            translateX(var(--debris-distance))
+            scale(1.2);
+    }
+}
+
+@keyframes energySpark {
+    0%, 100% {
+        transform:
+            rotate(var(--spark-angle))
+            translateX(35px)
+            scale(.2);
+
+        opacity: 0;
+    }
+
+    35% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: .8;
+    }
+
+    100% {
+        transform:
+            rotate(var(--spark-angle))
+            translateX(var(--spark-distance))
+            scale(1.4);
+
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .anim-black-hole,
+    .anim-black-hole * {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+  }
+ 
