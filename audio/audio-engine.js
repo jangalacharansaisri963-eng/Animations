@@ -2,6 +2,14 @@ let audioContext = null;
 
 const AnimationAudioRegistry = {};
 
+let activeAnimationAudio = null;
+let activeAnimationName = null;
+
+
+/* =========================
+   AUDIO CONTEXT
+========================= */
+
 function getAudioContext() {
     if (!audioContext) {
         const AudioContext =
@@ -18,6 +26,11 @@ function getAudioContext() {
 
     return audioContext;
 }
+
+
+/* =========================
+   UNLOCK AUDIO
+========================= */
 
 async function unlockAudio() {
     const ctx = getAudioContext();
@@ -36,6 +49,11 @@ async function unlockAudio() {
 
     return ctx;
 }
+
+
+/* =========================
+   BASIC TONE
+========================= */
 
 function playTone(
     frequency = 440,
@@ -79,6 +97,11 @@ function playTone(
     );
 }
 
+
+/* =========================
+   AUDIO REGISTRATION
+========================= */
+
 function registerAnimationAudio(name, playFn) {
     if (!name || typeof playFn !== "function") {
         console.error("Invalid animation audio registration.");
@@ -87,6 +110,11 @@ function registerAnimationAudio(name, playFn) {
 
     AnimationAudioRegistry[name] = playFn;
 }
+
+
+/* =========================
+   PLAY ONCE
+========================= */
 
 async function playAnimationSound(name) {
     const playFn = AnimationAudioRegistry[name];
@@ -98,7 +126,11 @@ async function playAnimationSound(name) {
         return;
     }
 
-    await unlockAudio();
+    const ctx = await unlockAudio();
+
+    if (!ctx) {
+        return;
+    }
 
     try {
         playFn();
@@ -108,4 +140,77 @@ async function playAnimationSound(name) {
             err
         );
     }
+}
+
+
+/* =========================
+   START ANIMATION AUDIO
+========================= */
+
+async function startAnimationAudio(name, interval = 700) {
+    stopAnimationAudio();
+
+    const ctx = await unlockAudio();
+
+    if (!ctx) {
+        return;
+    }
+
+    const playFn = AnimationAudioRegistry[name];
+
+    if (typeof playFn !== "function") {
+        console.warn(
+            `No audio registered for animation "${name}".`
+        );
+        return;
+    }
+
+    activeAnimationName = name;
+
+    try {
+        playFn();
+    } catch (err) {
+        console.warn(
+            `Failed to start audio for "${name}":`,
+            err
+        );
+    }
+
+    activeAnimationAudio = setInterval(() => {
+
+        if (!activeAnimationName) {
+            return;
+        }
+
+        const currentPlayFn =
+            AnimationAudioRegistry[activeAnimationName];
+
+        if (typeof currentPlayFn !== "function") {
+            return;
+        }
+
+        try {
+            currentPlayFn();
+        } catch (err) {
+            console.warn(
+                `Animation audio error for "${activeAnimationName}":`,
+                err
+            );
+        }
+
+    }, interval);
+}
+
+
+/* =========================
+   STOP ANIMATION AUDIO
+========================= */
+
+function stopAnimationAudio() {
+    if (activeAnimationAudio !== null) {
+        clearInterval(activeAnimationAudio);
+        activeAnimationAudio = null;
+    }
+
+    activeAnimationName = null;
 }
