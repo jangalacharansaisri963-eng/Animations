@@ -1,0 +1,28 @@
+name: Unzip Animations
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'Animations-main.zip'
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Unzip file
+        run: |
+          unzip -o Animations-main.zip -d ./
+          ls -la
+          rm Animations-main.zip
+
+      - name: Commit unzipped files
+        run: |
+          git config --global user.name "Dan Studios"
+          git config --global user.email "dan@yellamanchili.com"
+          git add .
+          git commit -m "Unzipped Animations-main.zip" || echo "No changes"
+          git push
