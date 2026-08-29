@@ -61,7 +61,9 @@ function getAnimationIcon(name) {
         spinner: "✧",
         pulse: "◉",
         orbit: "◎",
-        dna: "🧬"
+        dna: "🧬",
+        "liquid-mercury": "☿",
+        "black-hole": "🕳️"
     };
 
     return icons[name] || "◆";
