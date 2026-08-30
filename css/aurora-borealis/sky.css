@@ -1,0 +1,121 @@
+.anim-aurora-borealis-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.anim-aurora {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #020817;
+}
+
+.aurora-sky {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        linear-gradient(
+            180deg,
+            #01030d 0%,
+            #02091a 30%,
+            #04152a 58%,
+            #061c2c 76%,
+            #020812 100%
+        );
+}
+
+.aurora-sky-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            ellipse at 50% 70%,
+            rgba(30, 130, 125, 0.18),
+            transparent 48%
+        ),
+        radial-gradient(
+            ellipse at 25% 45%,
+            rgba(30, 80, 160, 0.12),
+            transparent 42%
+        ),
+        radial-gradient(
+            ellipse at 78% 38%,
+            rgba(90, 40, 150, 0.1),
+            transparent 40%
+        );
+    animation: skyPulse 9s ease-in-out infinite alternate;
+}
+
+@keyframes skyPulse {
+    from {
+        opacity: 0.7;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.aurora-deep-space {
+    position: absolute;
+    inset: -20%;
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            transparent 25%,
+            rgba(0, 0, 15, 0.22) 75%,
+            rgba(0, 0, 0, 0.7) 100%
+        );
+    pointer-events: none;
+}
+
+.aurora-horizon {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30%;
+    height: 20%;
+    z-index: 12;
+    pointer-events: none;
+}
+
+.horizon-glow {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 0;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(55, 210, 170, 0.12);
+    filter: blur(35px);
+    animation: horizonPulse 7s ease-in-out infinite alternate;
+}
+
+.horizon-light {
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    bottom: 8%;
+    height: 2px;
+    background: rgba(120, 255, 215, 0.35);
+    box-shadow:
+        0 0 12px rgba(100, 255, 210, 0.45),
+        0 0 35px rgba(60, 220, 180, 0.25);
+}
+
+@keyframes horizonPulse {
+    from {
+        transform: scaleX(0.8);
+        opacity: 0.45;
+    }
+
+    to {
+        transform: scaleX(1.15);
+        opacity: 0.9;
+    }
+}
