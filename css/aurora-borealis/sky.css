@@ -3,6 +3,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+    contain: layout paint;
 }
 
 .anim-aurora {
@@ -10,112 +11,161 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #020817;
+    background: #01040d;
+    isolation: isolate;
 }
 
 .aurora-sky {
     position: absolute;
     inset: 0;
     overflow: hidden;
-    isolation: isolate;
     background:
+        radial-gradient(
+            ellipse 85% 55% at 50% 65%,
+            rgba(20, 125, 108, 0.16),
+            transparent 65%
+        ),
+        radial-gradient(
+            ellipse 70% 70% at 15% 40%,
+            rgba(30, 65, 145, 0.16),
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 70% 65% at 85% 35%,
+            rgba(90, 35, 145, 0.12),
+            transparent 70%
+        ),
         linear-gradient(
             180deg,
-            #01030d 0%,
-            #02091a 30%,
-            #04152a 58%,
-            #061c2c 76%,
-            #020812 100%
+            #01020a 0%,
+            #020713 25%,
+            #031021 48%,
+            #041a29 70%,
+            #020b14 100%
         );
 }
 
 .aurora-sky-gradient {
     position: absolute;
-    inset: 0;
+    inset: -15%;
     background:
         radial-gradient(
-            ellipse at 50% 70%,
-            rgba(30, 130, 125, 0.18),
-            transparent 48%
+            ellipse at 50% 75%,
+            rgba(40, 255, 180, 0.12),
+            transparent 38%
         ),
         radial-gradient(
-            ellipse at 25% 45%,
-            rgba(30, 80, 160, 0.12),
+            ellipse at 30% 50%,
+            rgba(30, 120, 255, 0.1),
             transparent 42%
         ),
         radial-gradient(
-            ellipse at 78% 38%,
-            rgba(90, 40, 150, 0.1),
+            ellipse at 75% 45%,
+            rgba(180, 50, 220, 0.08),
             transparent 40%
         );
-    animation: skyPulse 9s ease-in-out infinite alternate;
+    filter: blur(18px);
+    animation: skyAtmosphere 12s ease-in-out infinite alternate;
 }
 
-@keyframes skyPulse {
-    from {
-        opacity: 0.7;
+@keyframes skyAtmosphere {
+    0% {
+        transform: scale(1) translate3d(-1%, 0, 0);
+        opacity: 0.65;
     }
 
-    to {
-        opacity: 1;
+    50% {
+        transform: scale(1.06) translate3d(1%, -1%, 0);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: scale(1.02) translate3d(-1%, 1%, 0);
+        opacity: 0.72;
     }
 }
 
 .aurora-deep-space {
     position: absolute;
-    inset: -20%;
+    inset: -30%;
     background:
         radial-gradient(
-            circle at 50% 50%,
-            transparent 25%,
-            rgba(0, 0, 15, 0.22) 75%,
-            rgba(0, 0, 0, 0.7) 100%
+            ellipse at center,
+            transparent 20%,
+            rgba(0, 0, 12, 0.08) 45%,
+            rgba(0, 0, 10, 0.4) 78%,
+            rgba(0, 0, 0, 0.78) 100%
         );
     pointer-events: none;
 }
 
 .aurora-horizon {
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 30%;
-    height: 20%;
-    z-index: 12;
+    left: -10%;
+    right: -10%;
+    bottom: 28%;
+    height: 25%;
+    z-index: 14;
     pointer-events: none;
 }
 
 .horizon-glow {
     position: absolute;
-    left: 10%;
-    right: 10%;
+    left: 8%;
+    right: 8%;
     bottom: 0;
-    height: 100%;
+    height: 80%;
     border-radius: 50%;
-    background: rgba(55, 210, 170, 0.12);
-    filter: blur(35px);
-    animation: horizonPulse 7s ease-in-out infinite alternate;
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(85, 255, 190, 0.2),
+            rgba(50, 210, 170, 0.08) 35%,
+            transparent 72%
+        );
+    filter: blur(30px);
+    animation: horizonGlow 8s ease-in-out infinite alternate;
 }
 
 .horizon-light {
     position: absolute;
-    left: 25%;
-    right: 25%;
-    bottom: 8%;
+    left: 15%;
+    right: 15%;
+    bottom: 12%;
     height: 2px;
-    background: rgba(120, 255, 215, 0.35);
+    background: rgba(130, 255, 220, 0.25);
     box-shadow:
-        0 0 12px rgba(100, 255, 210, 0.45),
-        0 0 35px rgba(60, 220, 180, 0.25);
+        0 0 8px rgba(100, 255, 210, 0.5),
+        0 0 24px rgba(70, 240, 190, 0.35),
+        0 0 55px rgba(50, 210, 170, 0.2);
+    animation: horizonLight 5s ease-in-out infinite alternate;
 }
 
-@keyframes horizonPulse {
+@keyframes horizonGlow {
     from {
-        transform: scaleX(0.8);
+        transform: scaleX(0.75);
         opacity: 0.45;
     }
 
+    50% {
+        transform: scaleX(1.1);
+        opacity: 0.8;
+    }
+
     to {
+        transform: scaleX(0.9);
+        opacity: 0.6;
+    }
+}
+
+@keyframes horizonLight {
+    from {
+        opacity: 0.25;
+        transform: scaleX(0.8);
+    }
+
+    to {
+        opacity: 0.7;
         transform: scaleX(1.15);
-        opacity: 0.9;
     }
 }
