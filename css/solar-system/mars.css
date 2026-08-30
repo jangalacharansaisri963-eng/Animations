@@ -1,0 +1,78 @@
+.orbit-mars {
+    position: absolute;
+    width: 325px;
+    height: 325px;
+    left: 50%;
+    top: 50%;
+    border: 1px solid rgba(160, 180, 255, 0.13);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: orbitMars 14s linear infinite;
+}
+
+.planet-mars {
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    left: 50%;
+    top: -50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at 32% 27%,
+            #ff9870,
+            #c84c32 55%,
+            #6d241e
+        );
+    box-shadow: 0 0 8px rgba(220, 70, 45, 0.35);
+    overflow: visible;
+}
+
+.mars-surface {
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at 65% 35%,
+            #7f2d26 0 2px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle at 30% 65%,
+            #8f3025 0 2px,
+            transparent 3px
+        );
+    animation: planetRotate 2.8s linear infinite;
+}
+
+.mars-ice {
+    position: absolute;
+    width: 7px;
+    height: 3px;
+    left: 6px;
+    top: 1px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.65);
+}
+
+@keyframes orbitMars {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes planetRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
