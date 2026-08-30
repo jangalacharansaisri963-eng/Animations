@@ -1,0 +1,154 @@
+.orbit-earth {
+    position: absolute;
+    width: 255px;
+    height: 255px;
+    left: 50%;
+    top: 50%;
+    border: 1px solid rgba(160, 180, 255, 0.13);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: orbitEarth 10s linear infinite;
+}
+
+.planet-earth {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    left: 50%;
+    top: -50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #72d9ff,
+            #1764b5 50%,
+            #092b68
+        );
+    box-shadow:
+        0 0 8px rgba(50, 160, 255, 0.7),
+        0 0 15px rgba(50, 130, 255, 0.25);
+    overflow: visible;
+}
+
+.earth-land {
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            ellipse at 65% 30%,
+            #58a84b 0 14%,
+            transparent 15%
+        ),
+        radial-gradient(
+            ellipse at 30% 65%,
+            #3d913e 0 16%,
+            transparent 17%
+        ),
+        radial-gradient(
+            ellipse at 60% 72%,
+            #78ad46 0 9%,
+            transparent 10%
+        );
+    animation: earthRotate 2.5s linear infinite;
+}
+
+.earth-clouds {
+    position: absolute;
+    inset: 1px;
+    border-radius: 50%;
+    background:
+        repeating-linear-gradient(
+            15deg,
+            transparent 0 5px,
+            rgba(255, 255, 255, 0.2) 6px 8px,
+            transparent 9px 13px
+        );
+    animation: earthRotate 2s linear infinite reverse;
+}
+
+.earth-atmosphere {
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px solid rgba(80, 190, 255, 0.65);
+    box-shadow: 0 0 7px rgba(50, 160, 255, 0.35);
+}
+
+.moon-orbit {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: 50%;
+    top: 50%;
+    border: 1px solid rgba(220, 230, 255, 0.13);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: moonOrbit 3s linear infinite;
+}
+
+.moon {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    left: 50%;
+    top: -3px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #eee,
+            #aaa 65%,
+            #666
+        );
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.35);
+}
+
+.moon-craters {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at 35% 60%,
+            #777 0 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle at 65% 35%,
+            #888 0 1px,
+            transparent 1.5px
+        );
+}
+
+@keyframes orbitEarth {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes moonOrbit {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes earthRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
