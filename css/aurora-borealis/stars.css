@@ -1,0 +1,141 @@
+.aurora-star-field,
+.aurora-twinkle-field {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.aurora-star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+}
+
+.aurora-star:nth-child(3n) {
+    width: 2px;
+    height: 2px;
+}
+
+.aurora-star:nth-child(7n) {
+    opacity: 0.55;
+}
+
+.aurora-star:nth-child(11n) {
+    box-shadow:
+        0 0 4px rgba(255, 255, 255, 0.8),
+        0 0 9px rgba(170, 220, 255, 0.3);
+}
+
+.aurora-star-1 { left: 4%; top: 12%; }
+.aurora-star-2 { left: 9%; top: 31%; }
+.aurora-star-3 { left: 13%; top: 8%; }
+.aurora-star-4 { left: 17%; top: 22%; }
+.aurora-star-5 { left: 21%; top: 42%; }
+.aurora-star-6 { left: 25%; top: 14%; }
+.aurora-star-7 { left: 29%; top: 34%; }
+.aurora-star-8 { left: 33%; top: 7%; }
+.aurora-star-9 { left: 37%; top: 27%; }
+.aurora-star-10 { left: 41%; top: 17%; }
+.aurora-star-11 { left: 45%; top: 38%; }
+.aurora-star-12 { left: 49%; top: 9%; }
+.aurora-star-13 { left: 53%; top: 25%; }
+.aurora-star-14 { left: 57%; top: 14%; }
+.aurora-star-15 { left: 61%; top: 35%; }
+.aurora-star-16 { left: 65%; top: 6%; }
+.aurora-star-17 { left: 69%; top: 28%; }
+.aurora-star-18 { left: 73%; top: 17%; }
+.aurora-star-19 { left: 77%; top: 40%; }
+.aurora-star-20 { left: 81%; top: 10%; }
+.aurora-star-21 { left: 85%; top: 30%; }
+.aurora-star-22 { left: 89%; top: 18%; }
+.aurora-star-23 { left: 94%; top: 7%; }
+.aurora-star-24 { left: 97%; top: 36%; }
+
+.aurora-star-25 { left: 6%; top: 52%; }
+.aurora-star-26 { left: 12%; top: 64%; }
+.aurora-star-27 { left: 18%; top: 57%; }
+.aurora-star-28 { left: 24%; top: 72%; }
+.aurora-star-29 { left: 30%; top: 54%; }
+.aurora-star-30 { left: 36%; top: 67%; }
+.aurora-star-31 { left: 42%; top: 58%; }
+.aurora-star-32 { left: 48%; top: 73%; }
+.aurora-star-33 { left: 54%; top: 61%; }
+.aurora-star-34 { left: 60%; top: 70%; }
+.aurora-star-35 { left: 66%; top: 53%; }
+.aurora-star-36 { left: 72%; top: 67%; }
+.aurora-star-37 { left: 78%; top: 56%; }
+.aurora-star-38 { left: 84%; top: 73%; }
+.aurora-star-39 { left: 90%; top: 60%; }
+.aurora-star-40 { left: 96%; top: 69%; }
+
+.aurora-twinkle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.25;
+    animation: starTwinkle 3s ease-in-out infinite;
+}
+
+.aurora-twinkle:nth-child(2n) {
+    animation-duration: 4.5s;
+}
+
+.aurora-twinkle:nth-child(3n) {
+    animation-duration: 2.7s;
+}
+
+@keyframes starTwinkle {
+    0%, 100% {
+        opacity: 0.15;
+        transform: scale(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.8);
+    }
+}
+
+.aurora-constellations {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.22;
+}
+
+.aurora-constellation {
+    position: absolute;
+    width: 90px;
+    height: 55px;
+    border-top: 1px solid rgba(180, 220, 255, 0.15);
+    border-right: 1px solid rgba(180, 220, 255, 0.1);
+    transform: rotate(-15deg);
+}
+
+.aurora-constellation-1 {
+    left: 12%;
+    top: 18%;
+}
+
+.aurora-constellation-2 {
+    right: 16%;
+    top: 24%;
+    transform: rotate(20deg);
+}
+
+.aurora-constellation-3 {
+    left: 38%;
+    top: 10%;
+    transform: rotate(8deg);
+}
+
+.aurora-constellation-4 {
+    right: 35%;
+    top: 40%;
+    transform: rotate(-25deg);
+}
