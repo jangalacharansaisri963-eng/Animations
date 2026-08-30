@@ -1,0 +1,139 @@
+.orbit-jupiter {
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    left: 50%;
+    top: 50%;
+    border: 1px solid rgba(160, 180, 255, 0.13);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: orbitJupiter 20s linear infinite;
+}
+
+.planet-jupiter {
+    position: absolute;
+    width: 43px;
+    height: 43px;
+    left: 50%;
+    top: -50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background:
+        linear-gradient(
+            0deg,
+            #a66a3f 0 12%,
+            #d8b083 13% 27%,
+            #9c6549 28% 39%,
+            #e1c19a 40% 52%,
+            #9c684b 53% 64%,
+            #d4a87d 65% 78%,
+            #8c5a42 79% 100%
+        );
+    box-shadow: 0 0 12px rgba(220, 170, 120, 0.35);
+    animation: jupiterRotate 3s linear infinite;
+    overflow: visible;
+}
+
+.jupiter-bands {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 5px,
+            rgba(255, 255, 255, 0.08) 6px 8px
+        );
+}
+
+.jupiter-storm {
+    position: absolute;
+    width: 11px;
+    height: 7px;
+    right: 6px;
+    bottom: 10px;
+    border-radius: 50%;
+    background: #a85d4c;
+    box-shadow: inset 2px 1px 3px rgba(255, 255, 255, 0.2);
+}
+
+.jupiter-moon {
+    position: absolute;
+    border-radius: 50%;
+    background: #bbb;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.25);
+}
+
+.moon-io {
+    width: 5px;
+    height: 5px;
+    left: -13px;
+    top: 8px;
+    animation: jMoon1 4s linear infinite;
+}
+
+.moon-europa {
+    width: 4px;
+    height: 4px;
+    right: -15px;
+    top: 18px;
+    animation: jMoon2 5s linear infinite;
+}
+
+.moon-ganymede {
+    width: 6px;
+    height: 6px;
+    left: 5px;
+    bottom: -10px;
+    animation: jMoon3 7s linear infinite;
+}
+
+@keyframes orbitJupiter {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes jupiterRotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes jMoon1 {
+    from {
+        transform: rotate(0deg) translateX(17px);
+    }
+
+    to {
+        transform: rotate(360deg) translateX(17px);
+    }
+}
+
+@keyframes jMoon2 {
+    from {
+        transform: rotate(360deg) translateX(20px);
+    }
+
+    to {
+        transform: rotate(0deg) translateX(20px);
+    }
+}
+
+@keyframes jMoon3 {
+    from {
+        transform: rotate(0deg) translateX(25px);
+    }
+
+    to {
+        transform: rotate(360deg) translateX(25px);
+    }
+}
