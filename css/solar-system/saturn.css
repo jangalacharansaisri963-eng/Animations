@@ -1,0 +1,225 @@
+.saturn-system {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform-style: preserve-3d;
+}
+
+.planet-saturn {
+    width: 72px;
+    height: 72px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            180deg,
+            #f7e8c4 0%,
+            #d9bd91 18%,
+            #f0d7aa 34%,
+            #c9a879 50%,
+            #ead3a5 65%,
+            #b99468 82%,
+            #dfc18f 100%
+        );
+    box-shadow:
+        inset -12px -8px 18px rgba(70, 45, 25, 0.45),
+        inset 10px 5px 15px rgba(255, 245, 210, 0.35),
+        0 0 18px rgba(232, 201, 145, 0.35);
+    z-index: 5;
+}
+
+.saturn-bands {
+    position: absolute;
+    inset: -5%;
+    border-radius: 50%;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 7px,
+            rgba(120, 87, 52, 0.18) 8px 11px,
+            transparent 12px 17px,
+            rgba(255, 240, 202, 0.22) 18px 22px
+        );
+    mix-blend-mode: multiply;
+    animation: saturnBands 9s linear infinite;
+}
+
+@keyframes saturnBands {
+    from {
+        transform: translateY(-8px);
+    }
+
+    to {
+        transform: translateY(8px);
+    }
+}
+
+.saturn-shadow {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(
+        115deg,
+        transparent 30%,
+        rgba(20, 15, 10, 0.05) 45%,
+        rgba(10, 8, 5, 0.42) 100%
+    );
+    pointer-events: none;
+}
+
+.saturn-rings {
+    position: absolute;
+    width: 175px;
+    height: 55px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotateX(65deg) rotateZ(-12deg);
+    transform-style: preserve-3d;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.saturn-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+}
+
+.ring-outer {
+    width: 175px;
+    height: 55px;
+    border-width: 5px;
+    border-color: rgba(218, 194, 153, 0.75);
+    box-shadow:
+        0 0 4px rgba(255, 235, 190, 0.45),
+        inset 0 0 3px rgba(100, 75, 45, 0.4);
+}
+
+.ring-middle {
+    width: 143px;
+    height: 44px;
+    border-width: 7px;
+    border-color: rgba(192, 163, 116, 0.8);
+}
+
+.ring-inner {
+    width: 112px;
+    height: 34px;
+    border-width: 5px;
+    border-color: rgba(235, 211, 169, 0.9);
+}
+
+.ring-gap {
+    width: 132px;
+    height: 40px;
+    border-width: 3px;
+    border-color: rgba(80, 62, 40, 0.65);
+}
+
+.saturn-ring-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.saturn-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: rgba(245, 222, 178, 0.85);
+    box-shadow: 0 0 3px rgba(255, 235, 190, 0.6);
+}
+
+.saturn-particle:nth-child(3n) {
+    width: 3px;
+    height: 3px;
+}
+
+.saturn-particle:nth-child(4n) {
+    opacity: 0.45;
+}
+
+.saturn-particle-1 { left: 8%; top: 47%; }
+.saturn-particle-2 { left: 13%; top: 31%; }
+.saturn-particle-3 { left: 19%; top: 66%; }
+.saturn-particle-4 { left: 25%; top: 20%; }
+.saturn-particle-5 { left: 31%; top: 73%; }
+.saturn-particle-6 { left: 37%; top: 27%; }
+.saturn-particle-7 { left: 43%; top: 78%; }
+.saturn-particle-8 { left: 48%; top: 16%; }
+.saturn-particle-9 { left: 54%; top: 82%; }
+.saturn-particle-10 { left: 60%; top: 22%; }
+.saturn-particle-11 { left: 66%; top: 70%; }
+.saturn-particle-12 { left: 72%; top: 29%; }
+.saturn-particle-13 { left: 78%; top: 62%; }
+.saturn-particle-14 { left: 84%; top: 36%; }
+.saturn-particle-15 { left: 90%; top: 51%; }
+.saturn-particle-16 { left: 17%; top: 54%; }
+.saturn-particle-17 { left: 28%; top: 42%; }
+.saturn-particle-18 { left: 39%; top: 59%; }
+.saturn-particle-19 { left: 51%; top: 40%; }
+.saturn-particle-20 { left: 63%; top: 57%; }
+.saturn-particle-21 { left: 74%; top: 45%; }
+.saturn-particle-22 { left: 82%; top: 70%; }
+.saturn-particle-23 { left: 35%; top: 49%; }
+.saturn-particle-24 { left: 69%; top: 34%; }
+
+.saturn-moon {
+    position: absolute;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 25%, #ddd 0 8%, transparent 9%),
+        radial-gradient(circle at 60% 65%, #888 0 10%, transparent 11%),
+        #aaa;
+    box-shadow: 0 0 5px rgba(220, 220, 220, 0.35);
+    z-index: 8;
+}
+
+.saturn-moon-1 {
+    width: 8px;
+    height: 8px;
+    left: 13%;
+    top: 15%;
+    animation: saturnMoon1 12s linear infinite;
+}
+
+.saturn-moon-2 {
+    width: 6px;
+    height: 6px;
+    right: 8%;
+    top: 72%;
+    animation: saturnMoon2 17s linear infinite;
+}
+
+.saturn-moon-3 {
+    width: 4px;
+    height: 4px;
+    left: 78%;
+    top: 12%;
+    animation: saturnMoon3 21s linear infinite;
+}
+
+@keyframes saturnMoon1 {
+    from { transform: rotate(0deg) translateX(95px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(95px) rotate(-360deg); }
+}
+
+@keyframes saturnMoon2 {
+    from { transform: rotate(360deg) translateX(115px) rotate(-360deg); }
+    to { transform: rotate(0deg) translateX(115px) rotate(0deg); }
+}
+
+@keyframes saturnMoon3 {
+    from { transform: rotate(0deg) translateX(135px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(135px) rotate(-360deg); }
+}
