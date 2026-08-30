@@ -1,0 +1,94 @@
+.planet-neptune {
+    width: 58px;
+    height: 58px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(120, 190, 255, 0.5),
+            transparent 24%
+        ),
+        linear-gradient(
+            160deg,
+            #477cf5,
+            #2857c7 42%,
+            #183d99 72%,
+            #102762
+        );
+    box-shadow:
+        inset -11px -8px 16px rgba(5, 15, 60, 0.55),
+        inset 8px 5px 12px rgba(120, 180, 255, 0.2),
+        0 0 18px rgba(55, 115, 255, 0.5);
+    z-index: 5;
+}
+
+.neptune-clouds {
+    position: absolute;
+    inset: -5%;
+    border-radius: 50%;
+    background:
+        repeating-linear-gradient(
+            175deg,
+            transparent 0 8px,
+            rgba(190, 220, 255, 0.15) 9px 12px,
+            transparent 13px 20px
+        );
+    animation: neptuneClouds 10s linear infinite;
+}
+
+@keyframes neptuneClouds {
+    from {
+        transform: translateX(-7px);
+    }
+
+    to {
+        transform: translateX(7px);
+    }
+}
+
+.neptune-storm {
+    position: absolute;
+    width: 18px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(12, 35, 95, 0.72);
+    box-shadow:
+        inset 2px 1px 3px rgba(120, 170, 255, 0.3),
+        0 0 4px rgba(20, 45, 130, 0.45);
+    left: 42%;
+    top: 35%;
+    transform: rotate(-12deg);
+    animation: neptuneStorm 8s ease-in-out infinite alternate;
+}
+
+.neptune-storm-2 {
+    width: 11px;
+    height: 6px;
+    left: 22%;
+    top: 66%;
+    opacity: 0.65;
+    animation-delay: -3s;
+}
+
+@keyframes neptuneStorm {
+    from {
+        transform: translateX(-3px) rotate(-12deg);
+    }
+
+    to {
+        transform: translateX(4px) rotate(-8deg);
+    }
+}
+
+.neptune-atmosphere {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid rgba(85, 155, 255, 0.28);
+    box-shadow: 0 0 12px rgba(50, 115, 255, 0.3);
+}
