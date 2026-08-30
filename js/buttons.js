@@ -64,6 +64,7 @@ function getAnimationIcon(name) {
         dna: "🧬",
         "liquid-mercury": "☿",
         "black-hole": "🕳️"
+        "solar-system": "🪐"
     };
 
     return icons[name] || "◆";
