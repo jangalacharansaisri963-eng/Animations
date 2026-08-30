@@ -1,0 +1,104 @@
+.asteroid-belt {
+    position: absolute;
+    width: 375px;
+    height: 375px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: asteroidBelt 24s linear infinite;
+    pointer-events: none;
+}
+
+.asteroid {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #888;
+    box-shadow: 0 0 3px rgba(200, 200, 200, 0.3);
+}
+
+.asteroid-1 {
+    left: 50%;
+    top: 1%;
+}
+
+.asteroid-2 {
+    left: 67%;
+    top: 7%;
+    width: 5px;
+    height: 5px;
+}
+
+.asteroid-3 {
+    left: 82%;
+    top: 22%;
+}
+
+.asteroid-4 {
+    left: 94%;
+    top: 48%;
+    width: 3px;
+    height: 3px;
+}
+
+.asteroid-5 {
+    left: 79%;
+    top: 77%;
+    width: 6px;
+    height: 4px;
+}
+
+.asteroid-6 {
+    left: 55%;
+    top: 94%;
+}
+
+.asteroid-7 {
+    left: 28%;
+    top: 91%;
+    width: 5px;
+    height: 5px;
+}
+
+.asteroid-8 {
+    left: 8%;
+    top: 67%;
+}
+
+.asteroid-9 {
+    left: 2%;
+    top: 42%;
+    width: 6px;
+    height: 3px;
+}
+
+.asteroid-10 {
+    left: 17%;
+    top: 18%;
+}
+
+.asteroid-11 {
+    left: 37%;
+    top: 4%;
+    width: 3px;
+    height: 5px;
+}
+
+.asteroid-12 {
+    left: 88%;
+    top: 61%;
+    width: 5px;
+    height: 3px;
+}
+
+@keyframes asteroidBelt {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
