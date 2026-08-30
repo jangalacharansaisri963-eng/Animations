@@ -1,0 +1,224 @@
+.aurora-moon {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    right: 11%;
+    top: 12%;
+    z-index: 8;
+}
+
+.moon-halo {
+    position: absolute;
+    inset: -35px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(210, 235, 255, 0.13) 0%,
+        rgba(150, 200, 255, 0.07) 35%,
+        transparent 70%
+    );
+    filter: blur(8px);
+    animation: moonHalo 6s ease-in-out infinite alternate;
+}
+
+.moon-glow {
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: rgba(200, 230, 255, 0.08);
+    box-shadow:
+        0 0 18px rgba(190, 220, 255, 0.2),
+        0 0 40px rgba(140, 190, 255, 0.1);
+}
+
+.moon-disc {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 31% 27%,
+            #ffffff 0%,
+            #e7edf2 38%,
+            #c5cdd4 70%,
+            #8b969e 100%
+        );
+    box-shadow:
+        inset -16px -10px 22px rgba(40, 50, 65, 0.42),
+        inset 7px 5px 12px rgba(255, 255, 255, 0.35),
+        0 0 15px rgba(210, 230, 255, 0.3);
+}
+
+.moon-crater {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(90, 100, 108, 0.18);
+    box-shadow:
+        inset 2px 2px 4px rgba(40, 45, 50, 0.15),
+        1px 1px 2px rgba(255, 255, 255, 0.15);
+}
+
+.moon-crater-1 {
+    width: 14px;
+    height: 9px;
+    left: 18%;
+    top: 24%;
+}
+
+.moon-crater-2 {
+    width: 9px;
+    height: 9px;
+    left: 55%;
+    top: 18%;
+}
+
+.moon-crater-3 {
+    width: 18px;
+    height: 12px;
+    left: 62%;
+    top: 55%;
+}
+
+.moon-crater-4 {
+    width: 8px;
+    height: 8px;
+    left: 28%;
+    top: 66%;
+}
+
+.moon-crater-5 {
+    width: 12px;
+    height: 7px;
+    left: 42%;
+    top: 43%;
+}
+
+.moon-crater-6 {
+    width: 7px;
+    height: 7px;
+    left: 75%;
+    top: 30%;
+}
+
+.moon-highlight {
+    position: absolute;
+    width: 42%;
+    height: 35%;
+    left: 12%;
+    top: 8%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.28);
+    filter: blur(4px);
+}
+
+.moon-shadow {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(
+        120deg,
+        transparent 38%,
+        rgba(20, 30, 40, 0.05) 55%,
+        rgba(10, 15, 25, 0.45) 100%
+    );
+}
+
+@keyframes moonHalo {
+    from {
+        transform: scale(0.92);
+        opacity: 0.55;
+    }
+
+    to {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+.aurora-shooting-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.aurora-shooting-star {
+    position: absolute;
+    width: 70px;
+    height: 1px;
+    transform: rotate(-35deg);
+    transform-origin: right center;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.95)
+    );
+    opacity: 0;
+    animation: shootingStar 9s linear infinite;
+}
+
+.aurora-shooting-star::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: white;
+    box-shadow:
+        0 0 5px white,
+        0 0 12px rgba(180, 220, 255, 0.8);
+}
+
+.aurora-shooting-star-1 {
+    left: 12%;
+    top: 18%;
+}
+
+.aurora-shooting-star-2 {
+    left: 65%;
+    top: 9%;
+    animation-delay: -3s;
+}
+
+.aurora-shooting-star-3 {
+    left: 82%;
+    top: 32%;
+    animation-delay: -6s;
+}
+
+.aurora-shooting-star-4 {
+    left: 42%;
+    top: 27%;
+    animation-delay: -7.5s;
+}
+
+.aurora-shooting-star-5 {
+    left: 28%;
+    top: 45%;
+    animation-delay: -4.5s;
+}
+
+@keyframes shootingStar {
+    0%, 72% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) rotate(-35deg);
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    83% {
+        opacity: 0;
+        transform: translate3d(180px, 120px, 0) rotate(-35deg);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
