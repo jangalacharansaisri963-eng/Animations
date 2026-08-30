@@ -1,0 +1,53 @@
+.orbit-venus {
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    left: 50%;
+    top: 50%;
+    border: 1px solid rgba(160, 180, 255, 0.13);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: orbitVenus 7s linear infinite;
+}
+
+.planet-venus {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 50%;
+    top: -50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at 32% 28%,
+            #fff0a3,
+            #d89b42 55%,
+            #9b5526
+        );
+    box-shadow: 0 0 10px rgba(220, 160, 70, 0.35);
+    overflow: visible;
+}
+
+.planet-clouds {
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    background:
+        repeating-linear-gradient(
+            -20deg,
+            transparent 0 3px,
+            rgba(255, 230, 160, 0.3) 4px 6px
+        );
+    animation: planetClouds 3s linear infinite;
+}
+
+@keyframes orbitVenus {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
