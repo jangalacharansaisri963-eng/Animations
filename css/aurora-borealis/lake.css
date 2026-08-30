@@ -1,0 +1,205 @@
+.aurora-lake {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 30%;
+    z-index: 20;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            180deg,
+            #03131b 0%,
+            #021017 25%,
+            #010b12 60%,
+            #01070c 100%
+        );
+}
+
+.lake-surface {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            ellipse at 50% 5%,
+            rgba(70, 240, 190, 0.13),
+            transparent 55%
+        );
+}
+
+.lake-depth {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            180deg,
+            transparent 0%,
+            rgba(0, 5, 10, 0.2) 35%,
+            rgba(0, 3, 8, 0.7) 100%
+        );
+}
+
+.water-ripple {
+    position: absolute;
+    left: 50%;
+    width: 30%;
+    height: 2px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: rgba(100, 210, 205, 0.08);
+    box-shadow:
+        0 0 8px rgba(80, 220, 200, 0.05);
+    animation: waterRipple 7s ease-in-out infinite;
+}
+
+.ripple-1 {
+    top: 12%;
+    width: 18%;
+}
+
+.ripple-2 {
+    top: 20%;
+    width: 32%;
+    animation-delay: -1.5s;
+}
+
+.ripple-3 {
+    top: 29%;
+    width: 45%;
+    animation-delay: -3s;
+}
+
+.ripple-4 {
+    top: 39%;
+    width: 25%;
+    animation-delay: -4.5s;
+}
+
+.ripple-5 {
+    top: 52%;
+    width: 55%;
+    animation-delay: -2s;
+}
+
+.ripple-6 {
+    top: 65%;
+    width: 38%;
+    animation-delay: -5s;
+}
+
+.ripple-7 {
+    top: 78%;
+    width: 62%;
+    animation-delay: -3.5s;
+}
+
+.ripple-8 {
+    top: 90%;
+    width: 45%;
+    animation-delay: -6s;
+}
+
+@keyframes waterRipple {
+    0%, 100% {
+        transform: translateX(-50%) scaleX(0.8);
+        opacity: 0.15;
+    }
+
+    50% {
+        transform: translateX(-50%) scaleX(1.2);
+        opacity: 0.55;
+    }
+}
+
+.lake-wave {
+    position: absolute;
+    left: -10%;
+    width: 120%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(140, 220, 220, 0.08),
+        rgba(190, 240, 235, 0.16),
+        rgba(100, 200, 210, 0.06),
+        transparent
+    );
+    animation: lakeWave 8s ease-in-out infinite alternate;
+}
+
+.wave-1 {
+    top: 25%;
+}
+
+.wave-2 {
+    top: 47%;
+    animation-delay: -2s;
+}
+
+.wave-3 {
+    top: 68%;
+    animation-delay: -4s;
+}
+
+.wave-4 {
+    top: 84%;
+    animation-delay: -6s;
+}
+
+@keyframes lakeWave {
+    from {
+        transform: translateX(-3%) scaleX(0.95);
+    }
+
+    to {
+        transform: translateX(3%) scaleX(1.05);
+    }
+}
+
+.lake-shore {
+    position: absolute;
+    top: -5px;
+    left: -5%;
+    width: 110%;
+    height: 14px;
+    background: rgba(120, 180, 185, 0.06);
+    filter: blur(3px);
+    transform: rotate(-0.5deg);
+}
+
+.lake-fog {
+    position: absolute;
+    left: -10%;
+    width: 120%;
+    height: 22%;
+    border-radius: 50%;
+    background: rgba(120, 190, 190, 0.035);
+    filter: blur(14px);
+    animation: lakeFog 13s ease-in-out infinite alternate;
+}
+
+.lake-fog-1 {
+    top: 4%;
+}
+
+.lake-fog-2 {
+    top: 33%;
+    opacity: 0.55;
+    animation-delay: -5s;
+}
+
+.lake-fog-3 {
+    top: 62%;
+    opacity: 0.35;
+    animation-delay: -9s;
+}
+
+@keyframes lakeFog {
+    from {
+        transform: translateX(-4%);
+    }
+
+    to {
+        transform: translateX(5%);
+    }
+}
