@@ -1,0 +1,148 @@
+.comet {
+    position: absolute;
+    width: 120px;
+    height: 50px;
+    pointer-events: none;
+    transform: rotate(-25deg);
+    z-index: 12;
+}
+
+.comet-head {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    right: 15px;
+    top: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow:
+        0 0 5px #fff,
+        0 0 12px rgba(150, 220, 255, 0.9),
+        0 0 22px rgba(80, 170, 255, 0.65);
+}
+
+.comet-glow {
+    position: absolute;
+    width: 28px;
+    height: 18px;
+    right: 5px;
+    top: 15px;
+    border-radius: 50%;
+    background: rgba(130, 210, 255, 0.3);
+    filter: blur(5px);
+}
+
+.comet-tail {
+    position: absolute;
+    width: 100px;
+    height: 10px;
+    right: 20px;
+    top: 20px;
+    transform-origin: right center;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(100, 190, 255, 0.08),
+        rgba(150, 220, 255, 0.5)
+    );
+    clip-path: polygon(
+        0 50%,
+        100% 0,
+        100% 100%
+    );
+    filter: blur(1px);
+}
+
+.comet-dust {
+    position: absolute;
+    width: 80px;
+    height: 25px;
+    right: 24px;
+    top: 13px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 230, 170, 0.12)
+    );
+    filter: blur(4px);
+}
+
+.comet-1 {
+    left: 12%;
+    top: 18%;
+    animation: cometFly1 14s linear infinite;
+}
+
+.comet-2 {
+    left: 72%;
+    top: 70%;
+    transform: rotate(155deg);
+    animation: cometFly2 19s linear infinite;
+}
+
+.comet-3 {
+    left: 42%;
+    top: 8%;
+    transform: rotate(-8deg);
+    animation: cometFly3 23s linear infinite;
+}
+
+@keyframes cometFly1 {
+    0% {
+        transform: translate(-180px, -60px) rotate(-25deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(420px, 180px) rotate(-25deg);
+        opacity: 0;
+    }
+}
+
+@keyframes cometFly2 {
+    0% {
+        transform: translate(200px, 100px) rotate(155deg);
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-450px, -230px) rotate(155deg);
+        opacity: 0;
+    }
+}
+
+@keyframes cometFly3 {
+    0% {
+        transform: translate(-300px, 160px) rotate(-8deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.9;
+    }
+
+    82% {
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate(380px, -180px) rotate(-8deg);
+        opacity: 0;
+    }
+}
