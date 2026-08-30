@@ -1,0 +1,144 @@
+@media (max-width: 900px) {
+    .aurora-moon {
+        width: 70px;
+        height: 70px;
+        right: 9%;
+        top: 10%;
+    }
+
+    .aurora-curtain-system {
+        inset: -8% -18% 18%;
+    }
+
+    .aurora-curtain {
+        filter: blur(6px);
+    }
+
+    .aurora-mountain {
+        width: 55%;
+    }
+
+    .pine-tree {
+        transform-origin: bottom center;
+    }
+
+    .aurora-glow {
+        filter: blur(28px);
+    }
+}
+
+@media (max-width: 600px) {
+    .aurora-moon {
+        width: 52px;
+        height: 52px;
+        right: 8%;
+        top: 9%;
+    }
+
+    .moon-halo {
+        inset: -24px;
+    }
+
+    .aurora-curtain-system {
+        inset: -5% -30% 15%;
+    }
+
+    .aurora-curtain {
+        width: 42%;
+        filter: blur(5px);
+        opacity: 0.55;
+    }
+
+    .aurora-wave {
+        width: 175%;
+        left: -38%;
+        filter: blur(6px);
+    }
+
+    .light-stream {
+        width: 1px;
+        filter: blur(2px);
+    }
+
+    .aurora-glow {
+        filter: blur(22px);
+    }
+
+    .aurora-mountains {
+        bottom: 24%;
+        height: 35%;
+    }
+
+    .aurora-ground {
+        height: 24%;
+    }
+
+    .aurora-lake {
+        height: 27%;
+    }
+
+    .pine-tree {
+        transform: scale(0.7);
+    }
+
+    .aurora-particle {
+        transform: scale(0.8);
+    }
+
+    .aurora-film-grain {
+        opacity: 0.035;
+    }
+
+    .aurora-bloom {
+        width: 110%;
+        filter: blur(45px);
+    }
+}
+
+@media (max-width: 400px) {
+    .aurora-moon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .aurora-curtain {
+        width: 48%;
+        opacity: 0.5;
+    }
+
+    .aurora-wave {
+        height: 22%;
+    }
+
+    .aurora-mountains {
+        bottom: 25%;
+        height: 32%;
+    }
+
+    .aurora-lake {
+        height: 25%;
+    }
+
+    .aurora-forest {
+        bottom: 15%;
+        height: 30%;
+    }
+
+    .pine-tree {
+        transform: scale(0.55);
+    }
+
+    .aurora-snow .snowflake:nth-child(3n) {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .aurora *,
+    .aurora *::before,
+    .aurora *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
