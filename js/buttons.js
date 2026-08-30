@@ -63,7 +63,7 @@ function getAnimationIcon(name) {
         orbit: "◎",
         dna: "🧬",
         "liquid-mercury": "☿",
-        "black-hole": "🕳️"
+        "black-hole": "🕳️",
         "solar-system": "🪐"
     };
 
