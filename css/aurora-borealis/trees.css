@@ -1,0 +1,206 @@
+.aurora-forest {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 15%;
+    height: 34%;
+    z-index: 21;
+    pointer-events: none;
+}
+
+.pine-tree {
+    position: absolute;
+    bottom: 0;
+    width: 44px;
+    height: 150px;
+    transform-origin: bottom center;
+}
+
+.pine-trunk {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 5px;
+    height: 42%;
+    transform: translateX(-50%);
+    background: #02070b;
+    border-radius: 3px;
+}
+
+.pine-layer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 28px solid transparent;
+    border-right: 28px solid transparent;
+    border-bottom: 60px solid #020a0d;
+    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
+}
+
+.pine-layer-1 {
+    bottom: 29%;
+    border-left-width: 17px;
+    border-right-width: 17px;
+    border-bottom-width: 38px;
+}
+
+.pine-layer-2 {
+    bottom: 20%;
+    border-left-width: 24px;
+    border-right-width: 24px;
+    border-bottom-width: 50px;
+}
+
+.pine-layer-3 {
+    bottom: 9%;
+    border-left-width: 32px;
+    border-right-width: 32px;
+    border-bottom-width: 66px;
+}
+
+.pine-layer-4 {
+    bottom: -1%;
+    border-left-width: 39px;
+    border-right-width: 39px;
+    border-bottom-width: 76px;
+}
+
+.pine-snow {
+    position: absolute;
+    left: 50%;
+    bottom: 18%;
+    width: 30px;
+    height: 95px;
+    transform: translateX(-50%);
+    opacity: 0.35;
+    clip-path: polygon(
+        50% 0,
+        62% 22%,
+        56% 22%,
+        72% 45%,
+        63% 44%,
+        82% 70%,
+        68% 67%,
+        92% 100%,
+        50% 82%,
+        8% 100%,
+        32% 67%,
+        18% 70%,
+        37% 44%,
+        28% 45%,
+        44% 22%,
+        38% 22%
+    );
+    background: rgba(190, 225, 230, 0.3);
+    filter: blur(1px);
+}
+
+.pine-tree-1 {
+    left: 3%;
+    height: 105px;
+    transform: scale(0.75);
+}
+
+.pine-tree-2 {
+    left: 8%;
+    height: 155px;
+    transform: scale(0.9);
+}
+
+.pine-tree-3 {
+    left: 14%;
+    height: 120px;
+    transform: scale(0.7);
+}
+
+.pine-tree-4 {
+    left: 20%;
+    height: 180px;
+    transform: scale(1.05);
+}
+
+.pine-tree-5 {
+    left: 28%;
+    height: 130px;
+    transform: scale(0.72);
+}
+
+.pine-tree-6 {
+    left: 35%;
+    height: 165px;
+    transform: scale(0.9);
+}
+
+.pine-tree-7 {
+    left: 43%;
+    height: 115px;
+    transform: scale(0.65);
+}
+
+.pine-tree-8 {
+    left: 51%;
+    height: 175px;
+    transform: scale(1);
+}
+
+.pine-tree-9 {
+    left: 60%;
+    height: 135px;
+    transform: scale(0.76);
+}
+
+.pine-tree-10 {
+    left: 67%;
+    height: 185px;
+    transform: scale(1.08);
+}
+
+.pine-tree-11 {
+    left: 76%;
+    height: 125px;
+    transform: scale(0.7);
+}
+
+.pine-tree-12 {
+    left: 82%;
+    height: 160px;
+    transform: scale(0.9);
+}
+
+.pine-tree-13 {
+    left: 89%;
+    height: 110px;
+    transform: scale(0.65);
+}
+
+.pine-tree-14 {
+    left: 95%;
+    height: 175px;
+    transform: scale(0.95);
+}
+
+.pine-tree:nth-child(odd) {
+    opacity: 0.7;
+}
+
+.pine-tree:nth-child(3n) {
+    opacity: 0.48;
+    filter: blur(0.7px);
+}
+
+.pine-tree:nth-child(4n) {
+    opacity: 0.85;
+}
+
+.aurora-forest::after {
+    content: "";
+    position: absolute;
+    inset: 50% 0 0;
+    background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(0, 0, 0, 0.55)
+    );
+}
