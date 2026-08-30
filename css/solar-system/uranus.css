@@ -1,0 +1,101 @@
+.uranus-system {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+}
+
+.planet-uranus {
+    width: 58px;
+    height: 58px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 32% 27%,
+            rgba(255, 255, 255, 0.45),
+            transparent 22%
+        ),
+        linear-gradient(
+            180deg,
+            #a9f1f2,
+            #74d4db 45%,
+            #59bfc9 70%,
+            #438e9b
+        );
+    box-shadow:
+        inset -10px -7px 15px rgba(20, 80, 90, 0.42),
+        0 0 16px rgba(115, 220, 230, 0.4);
+    z-index: 5;
+}
+
+.uranus-atmosphere {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px solid rgba(174, 248, 255, 0.35);
+    box-shadow: 0 0 12px rgba(111, 235, 245, 0.4);
+}
+
+.uranus-clouds {
+    position: absolute;
+    inset: -5%;
+    border-radius: 50%;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 9px,
+            rgba(220, 255, 255, 0.09) 10px 13px,
+            transparent 14px 20px
+        );
+    animation: uranusClouds 12s linear infinite;
+}
+
+@keyframes uranusClouds {
+    from {
+        transform: translateY(-8px);
+    }
+
+    to {
+        transform: translateY(8px);
+    }
+}
+
+.uranus-rings {
+    position: absolute;
+    width: 125px;
+    height: 42px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotateZ(-25deg) rotateX(72deg);
+    transform-style: preserve-3d;
+    z-index: 4;
+}
+
+.uranus-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 125px;
+    height: 42px;
+    border: 2px solid rgba(150, 215, 220, 0.45);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.uranus-ring-2 {
+    width: 105px;
+    height: 35px;
+    border-width: 3px;
+    border-color: rgba(190, 235, 235, 0.35);
+}
+
+.uranus-ring-3 {
+    width: 85px;
+    height: 28px;
+    border-width: 1px;
+    border-color: rgba(120, 190, 200, 0.5);
+}
